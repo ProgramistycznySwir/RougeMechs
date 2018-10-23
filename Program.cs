@@ -32,193 +32,24 @@ namespace RougeMechs
 
         static void Main(string[] args)
         {
-            Console.SetWindowSize(237, 84); //max: 240;84
+            Console.SetWindowSize(227, 63); //max: 240;84
             Console.CursorVisible = false;
             Console.Title = "Sky Commander 0.1.4 (let's talk 'bout power display)";
             //Console.ForegroundColor = ConsoleColor.White;
 
             //Console.BackgroundColor = ConsoleColor.Red; //Sets console background to red
-            Console.WriteLine("I'm Alive!");
-            Console.WriteLine("+---+---+---+---««««█▓▒░ ⌂⌂\n");
-            PercentSimple(5, 23, true);
-            int winx = (240 - 73) - 3;
-            int winy = (84 - 34) - 2;
-            Ship ship = new Ship();
+            //Console.WriteLine("I'm Alive!");
+            //Console.WriteLine("+---+---+---+---««««█▓▒░ ⌂⌂\n");
 
-            Draw.VerticalLine(118);
-
-            Draw.UI(winx, winy);
-
-            ship.WriteShipInfo(Draw.winx_ShipInfo, Draw.winy_ShipInfo);
-
-            ship.WriteRepirPriority(Draw.winx_Diag, Draw.winy_Diag);
-
-            ship.WriteShipPDSSettings(Draw.winx_PDSSettings, Draw.winy_PDSSettings);
-
-            ship.Diagnostics(Draw.winx_Diag, Draw.winy_Diag);
-
-            ship.WritePowerDistrubuted(Draw.winx_Diag, Draw.winy_Diag);
-
-            Draw.YodaArt(229, 71);
-            Draw.R2D2Art(228, 77);
-            Draw.DarthVaderArt(10, 10);
+            Kolorki();
+            
             ///stop shit from doin shit
             for (; ; )
             {
                 Console.ReadKey();
             }
 
-        }
-        public class Ship ///SHIP CLASS   SHIP CLASS   SHIP CLASS   SHIP CLASS   SHIP CLASS   SHIP CLASS   SHIP CLASS   SHIP CLASS   SHIP CLASS   SHIP CLASS   SHIP CLASS   SHIP CLASS   SHIP CLASS   
-        {
-            public string[] name = new string[3]; //nazwa, klasa, model (napis)
-            public int shipclass;              //klasa okretu
-            public int FleetID;                //ID w flocie
-
-            public double[] poss = new double[4];  //positionX, positionY, azimuth, speed
-            public double[] accel = new double[3]; //current, max posible, factory
-
-            public bool[,] moduleExist = new bool[5, 10]; //Jak nizej, ta tablica sprawdza czy modul wgle jest
-            public int[,,] moduleHP = new int[5, 10, 2]; //POW, PDS, LOG, OXG, ENG, THR, MAN, SHD, DEF, WEP ; CurrentHP, MaxHP
-            public bool[,] statusExist = new bool[5, 6];
-            public int[,,] status = new int[5, 6, 2]; //FIR, INT, OXG ,HP,  SHD, REF ; Current, Max
-
-            public int[] RT = new int[2]; //current Repair Tokens production, fabric Repair Tokens production
-            public int[] repairPriority = new int[17]; //Section: N,L,C,R,S, POW, PDS, LOG, OXG, ENG, TRH, MAN, SHD, DEF, WEP, FIR, INT
-
-            public int[] energy = new int[3]; //current energy stored, current energy storage, factory energy storage
-            public int[] reactor = new int[3]; //current reactors power, fabric reactors power, balance
-            public int[] PDSSetting = new int[9]; //PDS, LOG, OXG, ENG, THR, MAN, SHD, DEF, WEP
-            public int[,] modulePower = new int[9, 2]; //PDS, LOG, OXG, ENG, THR, MAN, SHD, DEF, WEP; supply, demand
-
-            public int[,] winSize = new int[1, 2]; //drugi wymiar to x i y; Diagnostics (jest to wymiar dla kursora)
-
-            public Ship() ///Constructor - Narazie tylko defaultuje wartosci
-            {
-                Console.WriteLine("Also does shit, but with class");
-                for (int a = 0; a < 17; a++) { repairPriority[a] = 3; }
-                for (int a = 0; a < 5; a++)
-                {
-                    for (int b = 0; b < 10; b++)
-                    {
-                        moduleExist[a, b] = true;
-                    }
-                    for (int b = 0; b < 6; b++)
-                    {
-                        statusExist[a, b] = true;
-                    }
-                }
-                for (int a = 0; a < 5; a++)
-                {
-                    for (int b = 0; b < 10; b++)
-                    {
-                        moduleHP[a, b, 0] = 100;
-                        moduleHP[a, b, 1] = 100;
-                    }
-                    for (int b = 0; b < 6; b++)
-                    {
-                        status[a, b, 0] = 100;
-                        status[a, b, 1] = 100;
-                    }
-                    for (int b = 0; b < 9; b++)
-                    {
-                        modulePower[b, 0] = 100;
-                        modulePower[b, 1] = 100;
-                    }
-                }
-
-                winSize[0, 0] = 5;
-                winSize[0, 1] = 16;
-                name[0] = "Rocinante";
-                moduleHP[2, 5, 0] = 5;
-            }
-            public void Diagnostics(int x, int y) ///Diagnostics - pisze w tabelce stan okrętu
-            {
-                int a1 = 0;
-                for (int a = 0; a < 20; a += 4)
-                {
-                    int b1 = 0;
-                    for (int b = 0; b < 32; b += 2)
-                    {
-                        GotoXY(x + 7 + a, y + 3 + b);
-                        if (b < 20 && moduleExist[a1, b1] == true)
-                        {
-                            PercentSimple(moduleHP[a1, b1, 0], moduleHP[a1, b1, 1], true);
-                            b1++;
-                        }
-
-                        /*else if (b < 20 && moduleExist[a1, b1] == false)
-                        {
-                            Console.ForegroundColor = ConsoleColor.DarkGray;
-                            Console.Write("NAN");
-                            Console.ForegroundColor = ConsoleColor.Gray;
-                            b1++;
-                        } */
-                        else if (statusExist[a1, b1 - 10] == true) { PercentSimple(status[a1, b1 - 10, 0], status[a1, b1 - 10, 1], true); }
-                        /*else
-                        {
-                            Console.ForegroundColor = ConsoleColor.DarkGray;
-                            Console.Write("NAN");
-                            Console.ForegroundColor = ConsoleColor.Gray;
-                            b1++;
-                        }*/
-                    }
-                    a1++;
-                }
-            }
-            public void WriteRepirPriority(int x, int y)
-            {
-                int b = 0;
-                for (int a = 0; a < 20; a += 4)
-                {
-                    GotoXY(x + 9 + a, y + 1); Console.Write(repairPriority[b]);
-                    b++;
-                }
-                for (int a = 2; a < 26; a += 2)
-                {
-                    GotoXY(x + 5, y + 1 + a); Console.Write(repairPriority[b]);
-                    b++;
-                }
-            }
-            public void WriteShipInfo(int x, int y)
-            {
-                GotoXY(x + 13, y + 2); Console.Write(name[0]);
-                GotoXY(x + 13, y + 3); Console.Write(name[1]);
-                GotoXY(x + 13, y + 4); Console.Write(name[2]);
-                GotoXY(x + 13, y + 5); Console.Write(FleetID);
-                GotoXY(x + 12, y + 7); Console.Write(poss[0]);
-                GotoXY(x + 12, y + 8); Console.Write(poss[1]);
-                GotoXY(x + 12, y + 9); Console.Write(poss[2]);
-                GotoXY(x + 12, y + 10); Console.Write(poss[3]);
-                GotoXY(x + 12, y + 11); Console.Write(accel[0]);
-                GotoXY(x + 20, y + 11); Console.Write(accel[1]);
-                GotoXY(x + 16, y + 13); Console.Write(energy[0]);
-                GotoXY(x + 24, y + 13); Console.Write(energy[1]);
-                GotoXY(x + 16, y + 14); Console.Write(reactor[0]);
-                GotoXY(x + 23, y + 14); Console.Write(reactor[2]);
-                GotoXY(x + 16, y + 15); Console.Write(RT[0]);
-
-            }
-            public void WriteShipPDSSettings(int x, int y)
-            {
-                int a1 = 0;
-                for (int a = 0; a < 18; a += 2)
-                {
-                    GotoXY(x + 1, y + 3 + a); Console.Write(PDSSetting[a1]);
-                    a1++;
-                }
-            }
-            public void WritePowerDistrubuted(int x, int y)
-            {
-                int a1 = 0;
-                for (int a = 0; a < 18; a += 2)
-                {
-                    GotoXY(x + 33, y + a + 5); PercentSimple(modulePower[a1, 0], modulePower[a1, 1], true);
-                    a1++;
-                }
-            }
-
-        }
+        }        
 
         ///FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS
 
@@ -393,127 +224,11 @@ namespace RougeMechs
         }
 
         ///FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS
-
-        public static void PercentSimple(int a, int b, bool color) ///dzieli numer a przez numer b i podaje go jako procent, bez przecinka; 3 wartość determinuje czy funkcja ma sama go wyświetlić wraz z kolorem w skali
-        {
-            double numa = Convert.ToDouble(a);
-            double numb = Convert.ToDouble(b);
-            if (color == true)
-            {
-                double perc = (numa / numb) * 100;
-                int perc1 = Convert.ToInt32(perc);
-                if (perc1 > 90) { Console.ForegroundColor = ConsoleColor.Gray; }
-                else if (perc1 <= 90 && perc1 > 75) { Console.ForegroundColor = ConsoleColor.Blue; }
-                else if (perc1 <= 75 && perc1 > 50) { Console.ForegroundColor = ConsoleColor.Green; }
-                else if (perc1 <= 50 && perc1 > 25) { Console.ForegroundColor = ConsoleColor.Yellow; }
-                else if (perc1 <= 25 && perc1 >= 0) { Console.ForegroundColor = ConsoleColor.Red; }
-
-                if (perc1 < 100) Console.Write(" ");
-                if (perc1 < 10) Console.Write(" ");
-
-                Console.Write(perc1);
-
-                Console.ResetColor();
-            }
-        }
+                
 
         public static void GotoXY(int x, int y) ///Quality of Life Feature
         {
             Console.SetCursorPosition(x, y);
         }
-        /* 
-         _________________________________
-        |:::::::::::::;;::::::::::::::::::|
-        |:::::::::::'~||~~~``:::::::::::::|
-        |::::::::'   .':     o`:::::::::::|
-        |:::::::' oo | |o  o    ::::::::::|
-        |::::::: 8  .'.'    8 o  :::::::::|
-        |::::::: 8  | |     8    :::::::::|
-        |::::::: _._| |_,...8    :::::::::|
-        |::::::'~--.   .--. `.   `::::::::|
-        |:::::'     =8     ~  \ o ::::::::|
-        |::::'       8._ 88.   \ o::::::::|
-        |:::'   __. ,.ooo~~.    \ o`::::::|
-        |:::   . -. 88`78o/:     \  `:::::|
-        |::'     /. o o \ ::      \88`::::|
-        |:;     o|| 8 8 |d.        `8 `:::|
-        |:.       - ^ ^ -'           `-`::|
-        |::.                          .:::|
-        |:::::.....           ::'     ``::|
-        |::::::::-'`-        88          `|
-        |:::::-'.          -       ::     |
-        |:-~. . .                   :     |
-        | .. .   ..:   o:8      88o       |
-        |. .     :::   8:P     d888. . .  |
-        |.   .   :88   88      888'  . .  |
-        |   o8  d88P . 88   ' d88P   ..   |
-        |  88P  888   d8P   ' 888         |
-        |   8  d88P.'d:8  .- dP~ o8       |
-        |      888   888    d~ o888    LS |
-        |_________________________________|
-
-            Watches the progress...
-
-
-                        MMMMMM=                                      
-                   .MMMMMMMMMMMMMM                                   
-                 MMMMMM         MMMM                                 
-              MMMMM              MMMMM.                              
-        MMMMMMMM                  ?MMMM.                             
-     .MMMMMMMM7MM                  MMMMM                             
-     MMMMMMMMM MM                   MMMM                             
-     MMMMMMMMM .MM                   MMM                             
-    .MMMMMMM.   MM.M.   =MMMMMMMM.   MMM                             
-     MMMMMMMM.MMMMMM.  MMMMMMMM MMM  MMM                             
-     MMMMMMMMMMMM     MMMMMMMMM  MMM MMM                             
-    MMM    MMM:  MM   MMMMMMMMM  MMM MMM                             
-   8MM.    MMMMMMMM=  MMMMMMMM.  .M ,MM7                             
-  MMMMMMMM..          MMMMM.     M  MMM                              
- .MMMMMMMMMMMMMMM       MMMMMMMMM.  MMM                              
-.MMM        MMMMMMMMMMM.           MMMM                              
-MMM                .~MMMMMMM.      MMM.                              
-MMM.                               MMMM                               
-.MMM                                MMMM                               
-MMM                                DMMM                                
-MMM                                 MMMM                                
-MMM                                .MMM                                 
-MMM                      MM        .MMM                                  
-MMM                     .MM  MM.   MMM~                                  
-MMM                     MMM .MM.   MMM                         MMMMM     
-MMM                     MM. MMM   MMM                        MMM   MMO   
-MMM                     MM  MM   .MMM                      MMMM     MM   
-MM~                    MM. MMM   MMM.                     MMM      IMM   
-MM.                    MM  MM.  .MMM                    .MMM.      MM    
-MM                     M  MMN   .MMM                   MMMM       MM.    
-MM+                   MM MMM    .MM 7MMMMMMMMMMM      MMM.       MM      
-MMM                  .M  MM      MMMMMM. .. MMMMMMM MMM.       MMM.      
-MMM                  +M MMM      MM    .MM     .MMMMMM.      .MMM.       
-?MM                  M  MM       .      MMM      ~MM.       MMMM         
-.MM                 MM  MM            ,MMMMMMMMMMM         MMMM          
-MMM              MM     MM          MMMMMMMMMMMMMMM     MMMMM           
-MMM            .M     N  MM                  ..MMMMM.     MMMM          
-.MM             MMMM MMMMMM                     .MMMMM        DMM       
-MMM              MMMMM.MM.             ,M,       .MMM.        MM       
-MMM               M.                  MMM         MMM.  .MMMM         
-MMMM                                              MMM.    MM          
-=MMM.                            MM.             MMM      MM         
-  MMMM.                          MM              MMM       M         
-    MMMM                                         MMMMM,. MMM         
-.          MMMMMMM.                     MMM            MMM MMMMMM.          
-MMMM      MMN  .MMMMM                               .MMMD                   
-MM MMN  .MM    MM MMMMMMMM~ .              M.     .MMMM                     
-MM   MM$MM   MMN      MMMMMMMMMM.          M.   .MMMM                       
-M.   MMM   MM              MMMMM  MMMMMMMMM~MMMMMM                         
-MM      .MMN          .. . +MM,  8MM .MMMMMMMM.                            
-M?    NMM           MMMMMMMMM   MM                                        
-.M  .MM7            MMM MMMM   MM                                         
-MMMM              OMM       .MM                                         
-.                 MMM      MM                                          
-                .MMM    MM                                           
-                 .MMD  MMM                                           
-                   MMMMM?                                            
-                    MMM.                                             
-
- */
     }
 }

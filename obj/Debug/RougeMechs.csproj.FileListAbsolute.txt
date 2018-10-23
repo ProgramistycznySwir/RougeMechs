@@ -1,0 +1,7 @@
+C:\Users\Użytkownik\source\repos\RougeMechs\RougeMechs\bin\Debug\RougeMechs.exe.config
+C:\Users\Użytkownik\source\repos\RougeMechs\RougeMechs\bin\Debug\RougeMechs.exe
+C:\Users\Użytkownik\source\repos\RougeMechs\RougeMechs\bin\Debug\RougeMechs.pdb
+C:\Users\Użytkownik\source\repos\RougeMechs\RougeMechs\obj\Debug\RougeMechs.csprojAssemblyReference.cache
+C:\Users\Użytkownik\source\repos\RougeMechs\RougeMechs\obj\Debug\RougeMechs.csproj.CoreCompileInputs.cache
+C:\Users\Użytkownik\source\repos\RougeMechs\RougeMechs\obj\Debug\RougeMechs.exe
+C:\Users\Użytkownik\source\repos\RougeMechs\RougeMechs\obj\Debug\RougeMechs.pdb
