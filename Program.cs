@@ -119,10 +119,21 @@ namespace RougeMechs
             /// <summary>
             /// Just sets Vector to 0; 0 :D (and that was my first XML comment)
             /// </summary>
-            public void Zero() ///
+            public void Zero() 
             {
                 x = 0;
                 y = 0;
+            }
+            /// <summary>
+            /// Just sets Vector to 0; 0 :D (and that was my first XML comment)
+            /// </summary>
+            public bool IsEqualTo(Vector2 vectorToCompare)
+            {
+                if (this.x != vectorToCompare.x || this.y != vectorToCompare.y)
+                {
+                    return false;
+                }
+                else  return true;
             }
         }
 
@@ -146,21 +157,24 @@ namespace RougeMechs
             {
                 GotoXY(ULCornerPosition);
                 Vector2 pos;
-                pos.x = ULCornerPosition.x; //simplification, <QoL>
+                pos.x = ULCornerPosition.x; //simplification  <QoL>
                 pos.y = ULCornerPosition.y;
 
-                int a=0;
-
-                while (pos.y < size.y)
+                while (pos.y <= size.y)
                 {
-                    while (pos.x < size.x)
+                    while (pos.x <= size.x)
                     {
                         GotoXY(pos);
-                        Console.Write("X");
+                        if(pos.IsEqualTo(ULCornerPosition)) Console.Write("╔");
+                        else if (pos.x == size.x && pos.y == ULCornerPosition.y) Console.Write("╗");
+                        else if (pos.y == size.y && pos.x == ULCornerPosition.x) Console.Write("╚");
+                        else if (pos.y == size.y && pos.x == size.x) Console.Write("╝");
+                        else if (pos.y == ULCornerPosition.y || pos.y == size.y) Console.Write("═");
+                        else if (pos.x == ULCornerPosition.x || pos.x == size.x) Console.Write("║");
+
                         pos.x++;
                     }
                     pos.x = ULCornerPosition.x;
-                    GotoXY(100, a); Console.Write("BEEP!"); GotoXY(pos); a++;
                     pos.y++;
                 }
             }
