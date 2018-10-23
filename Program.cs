@@ -8,6 +8,8 @@ namespace RougeMechs
 {
     class Program
     {
+        
+
         public static void Kolorki() ///Do sprawdzania kolorów (tak paleta)
         {
             Console.Write(Console.ForegroundColor);
@@ -32,7 +34,8 @@ namespace RougeMechs
 
         static void Main(string[] args)
         {
-            Console.SetWindowSize(227, 63); //max: 240;84
+            Vector2 screenSize = new Vector2(237, 63);
+            Console.SetWindowSize(screenSize.x, screenSize.y); //max: 227;63
             Console.CursorVisible = false;
             Console.Title = "Sky Commander 0.1.4 (let's talk 'bout power display)";
             //Console.ForegroundColor = ConsoleColor.White;
@@ -43,12 +46,13 @@ namespace RougeMechs
             
             bool gameover = false;
 
-            Kolorki();
+            Kolorki(); //20:15
+            
 
             while (!gameover)
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
-                
+                Console.WriteLine(Console.BufferWidth);
 
                 Console.WriteLine("done A Thing" + key.KeyChar);
             }
@@ -57,9 +61,45 @@ namespace RougeMechs
             for (; ; )
             {
                 Console.ReadKey();
-            }
 
-        }        
+            }
+            
+
+        }
+
+        ///Classes
+        
+        private class SpiritMech
+        {
+            public int HP, MaxHP;
+            public Vector2 position;
+
+            public SpiritMech(int MaxHP, Vector2 position)
+            {
+                this.MaxHP = MaxHP;
+                HP = MaxHP;
+
+                this.position = position;
+
+            }
+            public void DrawOnMap(Vector2 newPosition)
+            {
+
+            }
+        }
+
+        ///STRUCTURES (S prefix stands for "Structure", but not always, like in Vector2 structure case)
+        
+        private struct Vector2
+        {
+            public int x, y;
+
+            public Vector2(int x, int y)
+            {
+                this.x = x;
+                this.y = y;
+            }
+        }
 
         ///FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS
 
