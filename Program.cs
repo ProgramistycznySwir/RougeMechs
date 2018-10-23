@@ -8,8 +8,6 @@ namespace RougeMechs
 {
     class Program
     {
-        
-
         public static void Kolorki() ///Do sprawdzania kolorów (tak paleta)
         {
             Console.Write(Console.ForegroundColor);
@@ -37,7 +35,7 @@ namespace RougeMechs
             Vector2 screenSize = new Vector2(237, 63);
             Console.SetWindowSize(screenSize.x, screenSize.y); //max: 227;63
             Console.CursorVisible = false;
-            Console.Title = "Sky Commander 0.1.4 (let's talk 'bout power display)";
+            Console.Title = "Rouge Mechs  (Finally! I was soo stupid i leaved old SC title for couple of versions)";
             //Console.ForegroundColor = ConsoleColor.White;
 
             //Console.BackgroundColor = ConsoleColor.Red; //Sets console background to red
@@ -55,19 +53,20 @@ namespace RougeMechs
             Vector2 frameSize = new Vector2(124, 62);
             Draw.Frame(Vector2.zero, frameSize);
 
-            bool a = false;
-
+            SpiritMech player = new SpiritMech(20, new Vector2(5, 5));
+            player.icon = 'X';
             while (!gameover)
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
 
-                if (a)
-                {
-                    Console.Write("\n");
-                }
-                else a = true;
+                player.Move(new Vector2(player.position.x++, player.position.y));
 
-                Console.Write(Console.CursorTop + " done A Thing " + key.KeyChar);
+                //Console.Write(Console.CursorTop + " done A Thing " + key.KeyChar);
+
+                //switch (key.KeyChar)
+                //{
+                //    case 'w': Console.Write("SHIET!!!!");
+                //}
             }
             
             ///stop shit from doin shit
@@ -86,6 +85,7 @@ namespace RougeMechs
         {
             public int HP, MaxHP;
             public Vector2 position;
+            public char icon;
 
             public SpiritMech(int MaxHP, Vector2 position)
             {
@@ -95,9 +95,11 @@ namespace RougeMechs
                 this.position = position;
 
             }
-            public void DrawOnMap(Vector2 newPosition)
+            public void Move(Vector2 newPosition)
             {
-
+                GotoXY(newPosition); Console.Write(icon);
+                GotoXY(position); Console.Write("O");
+                position = newPosition;
             }
         }
 
@@ -116,8 +118,12 @@ namespace RougeMechs
                 this.x = x;
                 this.y = y;
             }
+            public Vector2(Vector2 vector2)
+            {
+                this = vector2;
+            }
             /// <summary>
-            /// Just sets Vector to 0; 0 :D (and that was my first XML comment)
+            /// Just sets Vector to 0; 0 :D (and that was my first XML comment, btw)
             /// </summary>
             public void Zero() 
             {
@@ -125,7 +131,7 @@ namespace RougeMechs
                 y = 0;
             }
             /// <summary>
-            /// Just sets Vector to 0; 0 :D (and that was my first XML comment)
+            /// Compares current vector to passed vector, and returns bool;
             /// </summary>
             public bool IsEqualTo(Vector2 vectorToCompare)
             {
@@ -135,6 +141,16 @@ namespace RougeMechs
                 }
                 else  return true;
             }
+            /// <summary>
+            /// Returns distance between two given points in space
+            /// </summary>
+            public float DistanceTo(Vector2 vectorToCompare)
+            {
+                double x = Math.Abs(this.x - vectorToCompare.x);
+                double y = Math.Abs(this.y - vectorToCompare.y);
+
+                return Convert.ToSingle(Math.Pow(x + y, 2));
+            }
         }
 
         ///FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS
@@ -142,7 +158,7 @@ namespace RougeMechs
         /// </summary>
         ///Class including many methods for creating UI
         /// </summary>
-        public static class Draw ///Class with drawing methods
+        public static class Draw
         {
             public static int winx_Diag;
             public static int winy_Diag;
@@ -153,11 +169,14 @@ namespace RougeMechs
             public static int winx_PDSSettings;
             public static int winy_PDSSettings;
 
-            public static void Frame(Vector2 ULCornerPosition, Vector2 size) //LU stands for Upper-Left
+            /// </summary>
+            ///Draws simple frame with double line border
+            /// </summary>
+            public static void Frame(Vector2 ULCornerPosition, Vector2 size) //UL stands for Upper-Left
             {
                 GotoXY(ULCornerPosition);
                 Vector2 pos;
-                pos.x = ULCornerPosition.x; //simplification  <QoL>
+                pos.x = ULCornerPosition.x; //simplification  <QoL> (it has not that big impact on performance and make it easier to read, maybe in later versions i'll optimize it)
                 pos.y = ULCornerPosition.y;
 
                 while (pos.y <= size.y)
