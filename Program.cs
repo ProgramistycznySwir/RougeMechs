@@ -40,8 +40,18 @@ namespace RougeMechs
             //Console.BackgroundColor = ConsoleColor.Red; //Sets console background to red
             //Console.WriteLine("I'm Alive!");
             //Console.WriteLine("+---+---+---+---««««█▓▒░ ⌂⌂\n");
+            
+            bool gameover = false;
 
             Kolorki();
+
+            while (!gameover)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+                
+
+                Console.WriteLine("done A Thing" + key.KeyChar);
+            }
             
             ///stop shit from doin shit
             for (; ; )
