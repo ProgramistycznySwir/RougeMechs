@@ -47,14 +47,27 @@ namespace RougeMechs
             bool gameover = false;
 
             Kolorki(); //20:15
-            
+
+            Console.BufferHeight = screenSize.y;
+
+            Console.Clear();
+
+            Vector2 frameSize = new Vector2(124, 62);
+            Draw.Frame(Vector2.zero, frameSize);
+
+            bool a = false;
 
             while (!gameover)
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
-                Console.WriteLine(Console.BufferWidth);
 
-                Console.WriteLine("done A Thing" + key.KeyChar);
+                if (a)
+                {
+                    Console.Write("\n");
+                }
+                else a = true;
+
+                Console.Write(Console.CursorTop + " done A Thing " + key.KeyChar);
             }
             
             ///stop shit from doin shit
@@ -90,19 +103,34 @@ namespace RougeMechs
 
         ///STRUCTURES (S prefix stands for "Structure", but not always, like in Vector2 structure case)
         
-        private struct Vector2
+        public struct Vector2
         {
             public int x, y;
+            /// <summary>
+            /// Static variable set to 0; 0
+            /// </summary>
+            public static Vector2 zero = new Vector2(0, 0);
 
             public Vector2(int x, int y)
             {
                 this.x = x;
                 this.y = y;
             }
+            /// <summary>
+            /// Just sets Vector to 0; 0 :D (and that was my first XML comment)
+            /// </summary>
+            public void Zero() ///
+            {
+                x = 0;
+                y = 0;
+            }
         }
 
         ///FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS
 
+        /// </summary>
+        ///Class including many methods for creating UI
+        /// </summary>
         public static class Draw ///Class with drawing methods
         {
             public static int winx_Diag;
@@ -113,6 +141,29 @@ namespace RougeMechs
 
             public static int winx_PDSSettings;
             public static int winy_PDSSettings;
+
+            public static void Frame(Vector2 ULCornerPosition, Vector2 size) //LU stands for Upper-Left
+            {
+                GotoXY(ULCornerPosition);
+                Vector2 pos;
+                pos.x = ULCornerPosition.x; //simplification, <QoL>
+                pos.y = ULCornerPosition.y;
+
+                int a=0;
+
+                while (pos.y < size.y)
+                {
+                    while (pos.x < size.x)
+                    {
+                        GotoXY(pos);
+                        Console.Write("X");
+                        pos.x++;
+                    }
+                    pos.x = ULCornerPosition.x;
+                    GotoXY(100, a); Console.Write("BEEP!"); GotoXY(pos); a++;
+                    pos.y++;
+                }
+            }
 
             public static void Title(int x, int y) //Size: 82 ; 6
             {
@@ -279,6 +330,10 @@ namespace RougeMechs
         public static void GotoXY(int x, int y) ///Quality of Life Feature
         {
             Console.SetCursorPosition(x, y);
+        }
+        public static void GotoXY(Vector2 position) ///same method but overloads with Vector2
+        {
+            Console.SetCursorPosition(position.x, position.y);
         }
     }
 }
