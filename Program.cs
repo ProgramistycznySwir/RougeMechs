@@ -29,14 +29,16 @@ namespace RougeMechs
             Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine("Yellow");
         }
 
+        public static Vector2 screenSize = new Vector2(237, 63);
 
         static void Main(string[] args)
         {
-            Vector2 screenSize = new Vector2(237, 63);
+            
             Console.SetWindowSize(screenSize.x, screenSize.y); //max: 227;63
             Console.CursorVisible = false;
             Console.Title = "Rouge Mechs  (Finally! I was soo stupid i leaved old SC title for couple of versions)";
             //Console.ForegroundColor = ConsoleColor.White;
+            
 
             //Console.BackgroundColor = ConsoleColor.Red; //Sets console background to red
             //Console.WriteLine("I'm Alive!");
@@ -44,7 +46,7 @@ namespace RougeMechs
             
             bool gameover = false;
 
-            Kolorki(); //20:15
+            Kolorki(); //17:40
 
             Console.BufferHeight = screenSize.y;
 
@@ -52,6 +54,7 @@ namespace RougeMechs
 
             Vector2 frameSize = new Vector2(124, 62);
             Draw.Frame(Vector2.zero, frameSize);
+            
 
             SpiritMech player = new SpiritMech(20, new Vector2(5, 5));
             player.icon = 'X';
@@ -59,16 +62,23 @@ namespace RougeMechs
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
 
-                player.Move(new Vector2(player.position.x+1, player.position.y));
+                
+
+
+                player.MoveTo(new Vector2(player.position.x, player.position.y));
 
                 //Console.Write(Console.CursorTop + " done A Thing " + key.KeyChar);
 
-                //switch (key.KeyChar)
-                //{
-                //    case 'w': Console.Write("SHIET!!!!");
-                //}
+                switch (key.KeyChar)
+                {
+                    case 'w':
+                        {
+                            Console.Write("SHIET!!!!");
+                            break;
+                        }
+                }
             }
-            
+
             ///stop shit from doin shit
             for (; ; )
             {
@@ -96,13 +106,13 @@ namespace RougeMechs
                 this.position = position;
 
             }
-            public void Move(Vector2 newPosition)
+            public void MoveTo(Vector2 newPosition)
             {
                 GotoXY(newPosition); Console.Write(icon);
                 GotoXY(position); Console.Write("O");
                 GotoXY(oldPosition); Console.Write(" ");
                 oldPosition = position;
-                position = newPosition; //small change
+                position = newPosition;
             }
         }
 
@@ -184,9 +194,9 @@ namespace RougeMechs
 
                 while (pos.y <= size.y)
                 {
-                    while (pos.x <= size.x)
+                    while (pos.x <= size.x && GotoXY(pos))
                     {
-                        GotoXY(pos);
+                        
                         if(pos.IsEqualTo(ULCornerPosition)) Console.Write("╔");
                         else if (pos.x == size.x && pos.y == ULCornerPosition.y) Console.Write("╗");
                         else if (pos.y == size.y && pos.x == ULCornerPosition.x) Console.Write("╚");
@@ -361,15 +371,31 @@ namespace RougeMechs
         }
 
         ///FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS
-                
 
-        public static void GotoXY(int x, int y) ///Quality of Life Feature
+
+        /// </summary>
+        ///Sets cursor position to given coords, and checks if given position don't exceed screen size
+        /// </summary>
+        public static bool GotoXY(int x, int y) ///Quality of Life Feature
         {
-            Console.SetCursorPosition(x, y);
+            if (x >= 0 && x <= screenSize.x && y >=0 && y <= screenSize.y)
+            {
+                Console.SetCursorPosition(x, y);
+                return true;
+            }
+            return false;
         }
-        public static void GotoXY(Vector2 position) ///same method but overloads with Vector2
-        {
-            Console.SetCursorPosition(position.x, position.y);
+        /// </summary>
+        ///Sets cursor position to given position (Vector2), and checks if given position don't exceed screen size
+        /// </summary>   
+        public static bool GotoXY(Vector2 position) ///same method but overloads with Vector2
+        { 
+            if (position.x >= 0 && position.x <= screenSize.x && position.y >= 0 && position.y <= screenSize.y)
+            {
+                Console.SetCursorPosition(position.x, position.y);
+                return true;
+            }
+            return false;
         }
     }
 }
