@@ -46,18 +46,21 @@ namespace RougeMechs
             
             bool gameover = false;
 
-            Kolorki(); //17:40
+            Kolorki(); //20:48
 
             Console.BufferHeight = screenSize.y;
 
             Console.Clear();
 
-            Vector2 frameSize = new Vector2(124, 62);
+            Vector2 frameSize = new Vector2(124,62);
             Draw.Frame(Vector2.zero, frameSize);
             
 
             SpiritMech player = new SpiritMech(20, new Vector2(5, 5));
             player.icon = 'X';
+
+            Draw.SMStats(new Vector2(150, 5), player);
+
             while (!gameover)
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
@@ -91,20 +94,35 @@ namespace RougeMechs
 
         ///Classes
         
-        private class SpiritMech
+        public class SpiritMech
         {
-            public int HP, MaxHP;
+            public int HP, maxHP;
+            public int MP, maxMP;
+
+            public int vit = 5, cap = 5, str = 5, agi = 5, spi = 5; //VITality, CAPacity (amount of MP), STRenght, AGIlity (ability to avoid and land attacks and more), SPIrit (strenght of used magic)
+            public int lvl = 1;
+            public int skillPoints;
+
             public Vector2 position;
             public Vector2 oldPosition;
             public char icon;
 
-            public SpiritMech(int MaxHP, Vector2 position)
+            public SpiritMech(int maxHP, Vector2 position)
             {
-                this.MaxHP = MaxHP;
-                HP = MaxHP;
+                this.maxHP = maxHP;
 
                 this.position = position;
 
+            }
+            public void Setup(bool firstSetup)
+            {
+                maxHP = vit * 15;
+                maxMP = cap * 10;
+                if (firstSetup)
+                {
+                    HP = maxHP;
+                    MP = maxMP;
+                }
             }
             public void MoveTo(Vector2 newPosition)
             {
@@ -164,6 +182,13 @@ namespace RougeMechs
 
                 return Convert.ToSingle(Math.Pow(x + y, 2));
             }
+            /// <summary>
+            ///Returns Vector2 which is sum of 2 Vector2 structs
+            /// </summary>
+            public static Vector2 SumUp(Vector2 v1, Vector2 v2)
+            {
+                return new Vector2(v1.x + v2.x, v1.y + v2.y);
+            }
         }
 
         ///FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS   FUNCTIONS
@@ -209,6 +234,45 @@ namespace RougeMechs
                     pos.x = ULCornerPosition.x;
                     pos.y++;
                 }
+            }
+            /// </summary>
+            ///Draws stats table and shows automatically shows values (i should move it somwhere else...)
+            /// </summary>
+            public static void SMStats(Vector2 ULCornerPosition, SpiritMech sm)
+            {
+                GotoXY(ULCornerPosition);                                   Console.Write("╔═══════════════════╗");
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 1))); Console.Write("║Health:      /     ║");
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 2))); Console.Write("║Spirit:      /     ║");
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 3))); Console.Write("╠═══════════════════╣");
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 4))); Console.Write("║Vit:               ║");
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 5))); Console.Write("║Cap:               ║");
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 6))); Console.Write("║Str:               ║");
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 7))); Console.Write("║Agi:               ║");
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 8))); Console.Write("║Spi:               ║");
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 9))); Console.Write("╚═══════════════════╝");
+
+
+
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 1))); Console.Write(sm.HP);
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 1))); Console.Write(sm.maxHP);
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 2))); Console.Write(sm.MP);
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 2))); Console.Write(sm.maxMP);
+
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 4))); Console.Write(sm.vit);
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 5))); Console.Write(sm.cap);
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 6))); Console.Write(sm.str);
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 7))); Console.Write(sm.agi);
+                GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 8))); Console.Write(sm.spi);
+
+
+
+
+                //GotoXY(x, y + 2); Console.Write("╠═════════════════════════════╬═════╬═══╣");
+                //GotoXY(x, y + vary + 16); Console.Write("║─────┼───┼───┼───┼───┼───┼───║");
+                //GotoXY(x, y + vary + 17); Console.Write("║     │   │   │   │   │   │   ║");
+                //GotoXY(x, y + vary + 18); Console.Write("╚═════════════════════════════╝");
+
+                //GotoXY(x + 1, y + 3); Console.Write("POW");
             }
 
             public static void Title(int x, int y) //Size: 82 ; 6
