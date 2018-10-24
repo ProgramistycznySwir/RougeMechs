@@ -59,7 +59,7 @@ namespace RougeMechs
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
 
-                player.Move(new Vector2(player.position.x++, player.position.y));
+                player.Move(new Vector2(player.position.x+1, player.position.y));
 
                 //Console.Write(Console.CursorTop + " done A Thing " + key.KeyChar);
 
@@ -85,6 +85,7 @@ namespace RougeMechs
         {
             public int HP, MaxHP;
             public Vector2 position;
+            public Vector2 oldPosition;
             public char icon;
 
             public SpiritMech(int MaxHP, Vector2 position)
@@ -99,6 +100,8 @@ namespace RougeMechs
             {
                 GotoXY(newPosition); Console.Write(icon);
                 GotoXY(position); Console.Write("O");
+                GotoXY(oldPosition); Console.Write(" ");
+                oldPosition = position;
                 position = newPosition;
             }
         }
