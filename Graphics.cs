@@ -246,5 +246,28 @@ namespace RougeMechsGraphics
             QoL.GotoXY(x, y + 27); Console.Write("|      888   888    d~ o888    LS |");
             QoL.GotoXY(x, y + 28); Console.Write("|_________________________________|");
         }
+        /// </summary>
+        ///Display every default color in console
+        /// </summary>
+        public static void Kolorki() ///Do sprawdzania kolorów (tak paleta)
+        {
+            Console.Write(Console.ForegroundColor);
+            Console.ForegroundColor = ConsoleColor.Black; Console.WriteLine("Black");
+            Console.ForegroundColor = ConsoleColor.Blue; Console.WriteLine("Blue");
+            Console.ForegroundColor = ConsoleColor.Cyan; Console.WriteLine("Cyan");
+            Console.ForegroundColor = ConsoleColor.DarkBlue; Console.WriteLine("DarkBlue");
+            Console.ForegroundColor = ConsoleColor.DarkCyan; Console.WriteLine("DarkCyan");
+            Console.ForegroundColor = ConsoleColor.DarkGray; Console.WriteLine("DarkGray");
+            Console.ForegroundColor = ConsoleColor.DarkGreen; Console.WriteLine("DarkGreen");
+            Console.ForegroundColor = ConsoleColor.DarkMagenta; Console.WriteLine("DarkMagenta");
+            Console.ForegroundColor = ConsoleColor.DarkRed; Console.WriteLine("DarkRed");
+            Console.ForegroundColor = ConsoleColor.DarkYellow; Console.WriteLine("DarkYellow");
+            Console.ForegroundColor = ConsoleColor.Gray; Console.WriteLine("Gray");
+            Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine("Green");
+            Console.ForegroundColor = ConsoleColor.Magenta; Console.WriteLine("Magenta");
+            Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Red");
+            Console.ForegroundColor = ConsoleColor.White; Console.WriteLine("White");
+            Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine("Yellow");
+        }
     }
 }
