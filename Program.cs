@@ -102,7 +102,7 @@ namespace RougeMechs
                 GotoXY(position); Console.Write("O");
                 GotoXY(oldPosition); Console.Write(" ");
                 oldPosition = position;
-                position = newPosition;
+                position = newPosition; //small change
             }
         }
 
