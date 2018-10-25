@@ -10,10 +10,6 @@ using RougeMechsQol;
 
 namespace RougeMechsClasses
 {
-    class Class1
-    {
-        
-    }
     public class SpiritMech
     {
         public int HP, maxHP;
@@ -27,6 +23,7 @@ namespace RougeMechsClasses
         public Vector2 oldPosition;
         public char icon;
 
+        protected SpiritMech() { }
         public SpiritMech(int maxHP, Vector2 position)
         {
             this.maxHP = maxHP;
@@ -46,11 +43,34 @@ namespace RougeMechsClasses
         }
         public void MoveTo(Vector2 newPosition)
         {
-            QoL.GotoXY(newPosition); Console.Write(icon);
-            QoL.GotoXY(position); Console.Write("O");
             QoL.GotoXY(oldPosition); Console.Write(" ");
+            QoL.GotoXY(position); Console.Write(".");
+            QoL.GotoXY(newPosition); Console.Write(icon);
+
             oldPosition = position;
             position = newPosition;
+        }
+    }
+    public class Enemy : SpiritMech
+    {
+
+    }
+    public class Parent
+    {
+        protected Parent()
+        {
+            Console.WriteLine("Parent");
+        }
+        protected Parent(int a)
+        {
+            Console.WriteLine("ParentINT");
+        }
+    }
+    public class Child : Parent
+    {
+        public Child()
+        {
+            Console.WriteLine("Child");
         }
     }
 }

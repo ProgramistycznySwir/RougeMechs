@@ -35,5 +35,16 @@ namespace RougeMechsQol
             }
             return false;
         }
+        /// </summary>
+        ///Prevents program from closing (you must close it manually to proceed)
+        /// </summary> 
+        public static void Blockade()
+        {
+            for (; ; )
+            {
+                Console.WriteLine("Program ended it's work, press alt + F4 to exit...");
+                Console.ReadKey();
+            }
+        }
     }
 }
