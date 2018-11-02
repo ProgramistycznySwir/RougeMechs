@@ -64,7 +64,7 @@ namespace RougeMechsClasses
         {
             QoL.GotoXY(position); Console.Write(icon);
         }
-        public void DrawStats(Vector2 ULCornerPosition)
+        public void DisplayStats(Vector2 ULCornerPosition)
         {
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(2, 1))); Console.Write(name);
             Console.ForegroundColor = ConsoleColor.DarkRed;
