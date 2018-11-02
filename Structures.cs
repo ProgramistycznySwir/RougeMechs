@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using RougeMechsGraphics;
 using RougeMechsQol;
+using RougeMechsClasses;
 
 namespace RougeMechsStructures
 {
@@ -67,6 +68,8 @@ namespace RougeMechsStructures
     {
         public int HP, maxHP;
         public int MP, maxMP;
+        public int shd, maxShd;
+        public int shieldRegeneration;
 
         public int vit, cap, str, agi, spi; //VITality, CAPacity (amount of MP), STRenght, AGIlity (ability to avoid and land attacks and more), SPIrit (strenght of used magic)
         public int vit1, cap1, str1, agi1, spi1; //from equipment
@@ -84,8 +87,35 @@ namespace RougeMechsStructures
             agi = 5;
             spi = 5;
 
+            vit1 = 0;
+            cap1 = 0;
+            str1 = 0;
+            agi1 = 0;
+            spi1 = 0;
+
+            vit2 = 5;
+            cap2 = 5;
+            str2 = 5;
+            agi2 = 5;
+            spi2 = 5;
+
             lvl = 1;
             skillPoints = 0;
+        }
+    }
+    public struct Item
+    {
+        int price;
+        int slot;        
+    }
+    public struct Weapon
+    {
+        public int bluntDamage, damage;
+        public int penetration;
+        public void DealDamage(SpiritMech target)
+        {
+            target.stats.HP -= bluntDamage;
+            target.stats.HP -= Convert.ToInt16(damage * 1);
         }
     }
 }

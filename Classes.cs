@@ -12,7 +12,10 @@ namespace RougeMechsClasses
 {
     public class SpiritMech
     {
+        public string name = "NONE";
+
         public RougeMechStats stats;
+        public int armor; //summary value of armor from equipment
 
         public Vector2 position;
         public Vector2 oldPosition;
@@ -21,8 +24,6 @@ namespace RougeMechsClasses
         protected SpiritMech() { }
         public SpiritMech(int maxHP, Vector2 position)
         {
-            this.stats.maxHP = maxHP;
-
             this.position = position;
 
             Setup(true);
@@ -36,6 +37,7 @@ namespace RougeMechsClasses
 
             stats.maxHP = stats.vit2 * 15;
             stats.maxMP = stats.cap2 * 10;
+            stats.maxShd = stats.cap2 * 2;
             if(stats.HP > stats.maxHP)
             {
                 stats.HP = stats.maxHP;
@@ -64,16 +66,26 @@ namespace RougeMechsClasses
         }
         public void DrawStats(Vector2 ULCornerPosition)
         {
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 1))); Console.Write(this.stats.HP);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 1))); Console.Write(this.stats.maxHP);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 2))); Console.Write(this.stats.MP);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 2))); Console.Write(this.stats.maxMP);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(2, 1))); Console.Write(name);
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 2))); Console.Write(this.stats.HP);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 2))); Console.Write(this.stats.maxHP);
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 3))); Console.Write(this.stats.MP);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 3))); Console.Write(this.stats.maxMP);
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 4))); Console.Write(this.stats.shd);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 4))); Console.Write(this.stats.maxShd);
 
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 4))); Console.Write(this.stats.vit + " ");
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 5))); Console.Write(this.stats.cap);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 6))); Console.Write(this.stats.str);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 7))); Console.Write(this.stats.agi);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 8))); Console.Write(this.stats.spi);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 7))); Console.Write(this.stats.vit + "<" + stats.vit1 + "> (" + stats.vit2 + ")");
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 8))); Console.Write(this.stats.cap + "<" + stats.cap1 + "> (" + stats.cap2 + ")");
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 9))); Console.Write(this.stats.str + "<" + stats.str1 + "> (" + stats.str2 + ")");
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 10))); Console.Write(this.stats.agi + "<" + stats.agi1 + "> (" + stats.agi2 + ")");
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 11))); Console.Write(this.stats.spi + "<" + stats.spi1 + "> (" + stats.spi2 + ")");
+        }
+        public void ChangeItem(int itemIndex, int newItemID)
+        {
+
         }
         public void Attack()
         {
