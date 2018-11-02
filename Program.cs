@@ -49,6 +49,7 @@ namespace RougeMechs
             player.Setup(true);
 
             Draw.SMStats(new Vector2(150, 5), player);
+            player.DrawStats(new Vector2(150, 5));
 
             int vara = 0;
 

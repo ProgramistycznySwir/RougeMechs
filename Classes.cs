@@ -34,12 +34,15 @@ namespace RougeMechsClasses
                 stats.Setup();
             }
 
-            stats.maxHP = stats.vit * 15;
-            stats.maxMP = stats.cap * 10;
+            stats.maxHP = stats.vit2 * 15;
+            stats.maxMP = stats.cap2 * 10;
+            if(stats.HP > stats.maxHP)
+            {
+                stats.HP = stats.maxHP;
+            }
 
             if (firstSetup)
             {
-                stats.Setup();
                 stats.HP = stats.maxHP;
                 stats.MP = stats.maxMP;
             }
@@ -59,6 +62,19 @@ namespace RougeMechsClasses
         {
             QoL.GotoXY(position); Console.Write(icon);
         }
+        public void DrawStats(Vector2 ULCornerPosition)
+        {
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 1))); Console.Write(this.stats.HP);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 1))); Console.Write(this.stats.maxHP);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 2))); Console.Write(this.stats.MP);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 2))); Console.Write(this.stats.maxMP);
+
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 4))); Console.Write(this.stats.vit + " ");
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 5))); Console.Write(this.stats.cap);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 6))); Console.Write(this.stats.str);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 7))); Console.Write(this.stats.agi);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 8))); Console.Write(this.stats.spi);
+        }
         public void Attack()
         {
 
@@ -67,23 +83,5 @@ namespace RougeMechsClasses
     public class Enemy : SpiritMech
     {
 
-    }
-    public class Parent
-    {
-        protected Parent()
-        {
-            Console.WriteLine("Parent");
-        }
-        protected Parent(int a)
-        {
-            Console.WriteLine("ParentINT");
-        }
-    }
-    public class Child : Parent
-    {
-        public Child()
-        {
-            Console.WriteLine("Child");
-        }
-    }
+    }    
 }

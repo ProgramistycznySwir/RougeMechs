@@ -69,9 +69,13 @@ namespace RougeMechsStructures
         public int MP, maxMP;
 
         public int vit, cap, str, agi, spi; //VITality, CAPacity (amount of MP), STRenght, AGIlity (ability to avoid and land attacks and more), SPIrit (strenght of used magic)
+        public int vit1, cap1, str1, agi1, spi1; //from equipment
+        public int vit2, cap2, str2, agi2, spi2; //wypadkowy po doliczeniu buffów i debuffów
         public int lvl;
         public int skillPoints;
-
+        /// <summary>
+        /// Method to make stats values not equal random values
+        /// </summary>
         public void Setup()
         {
             vit = 5;

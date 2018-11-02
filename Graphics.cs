@@ -64,23 +64,7 @@ namespace RougeMechsGraphics
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 7))); Console.Write("║Agi:               ║");
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 8))); Console.Write("║Spi:               ║");
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 9))); Console.Write("╚═══════════════════╝");
-
-
-
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 1))); Console.Write(sm.stats.HP);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 1))); Console.Write(sm.stats.maxHP);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 2))); Console.Write(sm.stats.MP);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 2))); Console.Write(sm.stats.maxMP);
-
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 4))); Console.Write(sm.stats.vit);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 5))); Console.Write(sm.stats.cap);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 6))); Console.Write(sm.stats.str);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 7))); Console.Write(sm.stats.agi);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 8))); Console.Write(sm.stats.spi);
-
-
-
-
+            
             //QoL.GotoXY(x, y + 2); Console.Write("╠═════════════════════════════╬═════╬═══╣");
             //QoL.GotoXY(x, y + vary + 16); Console.Write("║─────┼───┼───┼───┼───┼───┼───║");
             //QoL.GotoXY(x, y + vary + 17); Console.Write("║     │   │   │   │   │   │   ║");
