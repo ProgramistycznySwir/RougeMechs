@@ -12,12 +12,7 @@ namespace RougeMechsClasses
 {
     public class SpiritMech
     {
-        public int HP, maxHP;
-        public int MP, maxMP;
-
-        public int vit = 5, cap = 5, str = 5, agi = 5, spi = 5; //VITality, CAPacity (amount of MP), STRenght, AGIlity (ability to avoid and land attacks and more), SPIrit (strenght of used magic)
-        public int lvl = 1;
-        public int skillPoints;
+        public RougeMechStats stats;
 
         public Vector2 position;
         public Vector2 oldPosition;
@@ -26,19 +21,27 @@ namespace RougeMechsClasses
         protected SpiritMech() { }
         public SpiritMech(int maxHP, Vector2 position)
         {
-            this.maxHP = maxHP;
+            this.stats.maxHP = maxHP;
 
             this.position = position;
 
+            Setup(true);
         }
         public void Setup(bool firstSetup)
         {
-            maxHP = vit * 15;
-            maxMP = cap * 10;
             if (firstSetup)
             {
-                HP = maxHP;
-                MP = maxMP;
+                stats.Setup();
+            }
+
+            stats.maxHP = stats.vit * 15;
+            stats.maxMP = stats.cap * 10;
+
+            if (firstSetup)
+            {
+                stats.Setup();
+                stats.HP = stats.maxHP;
+                stats.MP = stats.maxMP;
             }
         }
         public void MoveTo(Vector2 newPosition)
@@ -47,8 +50,18 @@ namespace RougeMechsClasses
             QoL.GotoXY(position); Console.Write(".");
             QoL.GotoXY(newPosition); Console.Write(icon);
 
+            Console.CursorVisible = false;
+
             oldPosition = position;
             position = newPosition;
+        }
+        public void ShowOnScreen()
+        {
+            QoL.GotoXY(position); Console.Write(icon);
+        }
+        public void Attack()
+        {
+
         }
     }
     public class Enemy : SpiritMech

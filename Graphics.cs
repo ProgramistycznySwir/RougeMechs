@@ -67,16 +67,16 @@ namespace RougeMechsGraphics
 
 
 
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 1))); Console.Write(sm.HP);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 1))); Console.Write(sm.maxHP);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 2))); Console.Write(sm.MP);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 2))); Console.Write(sm.maxMP);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 1))); Console.Write(sm.stats.HP);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 1))); Console.Write(sm.stats.maxHP);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 2))); Console.Write(sm.stats.MP);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 2))); Console.Write(sm.stats.maxMP);
 
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 4))); Console.Write(sm.vit);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 5))); Console.Write(sm.cap);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 6))); Console.Write(sm.str);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 7))); Console.Write(sm.agi);
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 8))); Console.Write(sm.spi);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 4))); Console.Write(sm.stats.vit);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 5))); Console.Write(sm.stats.cap);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 6))); Console.Write(sm.stats.str);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 7))); Console.Write(sm.stats.agi);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 8))); Console.Write(sm.stats.spi);
 
 
 

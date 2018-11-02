@@ -63,4 +63,25 @@ namespace RougeMechsStructures
             return new Vector2(v1.x + v2.x, v1.y + v2.y);
         }
     }
+    public struct RougeMechStats
+    {
+        public int HP, maxHP;
+        public int MP, maxMP;
+
+        public int vit, cap, str, agi, spi; //VITality, CAPacity (amount of MP), STRenght, AGIlity (ability to avoid and land attacks and more), SPIrit (strenght of used magic)
+        public int lvl;
+        public int skillPoints;
+
+        public void Setup()
+        {
+            vit = 5;
+            cap = 5;
+            str = 5;
+            agi = 5;
+            spi = 5;
+
+            lvl = 1;
+            skillPoints = 0;
+        }
+    }
 }

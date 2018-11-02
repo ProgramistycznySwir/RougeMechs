@@ -46,16 +46,17 @@ namespace RougeMechs
 
             SpiritMech player = new SpiritMech(20, new Vector2(5, 5));
             player.icon = '@';
+            player.Setup(true);
 
             Draw.SMStats(new Vector2(150, 5), player);
 
             int vara = 0;
 
-            Console.Clear();
+            //Console.Clear();
 
             Enemy child = new Enemy();
 
-            QoL.Blockade();
+            //QoL.Blockade();
 
             while (!gameover)
             {
