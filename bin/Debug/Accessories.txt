@@ -1,0 +1,4 @@
+Name of Item; slot; weight; price; vit; cap; str; agi; spi
+Shard of Haste; 6; 2; 0; 0; 0; 0; 2; 0
+Stone of Haste; 6; 2; 0; 0; 0; 0; 4; 0
+Crystal of Haste; 6; 3; 0; -1; 0; 0; 7; 0

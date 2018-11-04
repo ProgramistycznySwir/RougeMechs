@@ -21,20 +21,28 @@ namespace RougeMechsClasses
         public Vector2 oldPosition;
         public char icon;
 
+        Accessory accessory;
+
         protected SpiritMech() { }
         public SpiritMech(int maxHP, Vector2 position)
         {
             this.position = position;
-
-            Setup(true);
+            accessory.LoadFromFile(3);
+            Update(true);
         }
-        public void Setup(bool firstSetup)
+        public void Update(bool firstSetup)
         {
             if (firstSetup)
             {
                 stats.Setup();
                 armor = 0;
             }
+
+            stats.vit1 = accessory.vit;
+            stats.cap1 = accessory.cap;
+            stats.str1 = accessory.str;
+            stats.agi1 = accessory.agi;
+            stats.spi1 = accessory.spi;
 
             stats.vit2 = stats.vit + stats.vit1;
             stats.cap2 = stats.cap + stats.cap1;

@@ -107,9 +107,9 @@ namespace RougeMechsStructures
     }
     public struct Item
     {
-        int price;
-        int weight;
         int slot;
+        int weight;        
+        int price;
         public static IEnumerable<string> LoadFromFile(int ID)
         {
             return System.IO.File.ReadLines("Items.txt").Skip(ID).Take(1);
@@ -125,4 +125,23 @@ namespace RougeMechsStructures
             target.stats.HP -= Convert.ToInt16(damage * 1);
         }
     }
+    public struct Accessory
+    {
+        int slot;
+        int weight;
+        int price;
+
+        public int vit, cap, str, agi, spi;
+
+        public void LoadFromFile(int ID)
+        {
+            string[] stats = System.IO.File.ReadLines("Accessories.txt").Skip(ID).Take(1).First().Split(';');
+            vit = Convert.ToInt16(stats[4]);
+            cap = Convert.ToInt16(stats[5]);
+            str = Convert.ToInt16(stats[6]);
+            agi = Convert.ToInt16(stats[7]);
+            spi = Convert.ToInt16(stats[8]);
+        }
+    }
+    ///slots: none (only eq), hands, armor, core, repulsors, vision, accesories
 }

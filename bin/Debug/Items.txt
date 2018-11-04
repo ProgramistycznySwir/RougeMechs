@@ -1,2 +1,3 @@
-﻿Name of Item;slot;weight;price
-Stone of Soil;0;10;50
+﻿Name of Item;slot;weight;price; //space don't make any difference in numbers
+Stone of Soil; 0; 10; 50
+Rusty bucket;0;20;5
