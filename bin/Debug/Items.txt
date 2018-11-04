@@ -1,0 +1,2 @@
+﻿Name of Item;slot;weight;price
+Stone of Soil;0;10;50

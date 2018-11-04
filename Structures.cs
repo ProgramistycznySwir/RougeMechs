@@ -71,6 +71,8 @@ namespace RougeMechsStructures
         public int shd, maxShd;
         public int shieldRegeneration;
 
+        public int movementSpeed;
+
         public int vit, cap, str, agi, spi; //VITality, CAPacity (amount of MP), STRenght, AGIlity (ability to avoid and land attacks and more), SPIrit (strenght of used magic)
         public int vit1, cap1, str1, agi1, spi1; //from equipment
         public int vit2, cap2, str2, agi2, spi2; //wypadkowy po doliczeniu buffów i debuffów
@@ -106,7 +108,12 @@ namespace RougeMechsStructures
     public struct Item
     {
         int price;
-        int slot;        
+        int weight;
+        int slot;
+        public static IEnumerable<string> LoadFromFile(int ID)
+        {
+            return System.IO.File.ReadLines("Items.txt").Skip(ID).Take(1);
+        }
     }
     public struct Weapon
     {

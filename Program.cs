@@ -51,7 +51,16 @@ namespace RougeMechs
             Draw.SMStats(new Vector2(150, 5), player);
             player.DisplayStats(new Vector2(150, 5));
 
-            int vara = 0;            
+            int vara = 0;
+
+            Console.Clear();
+
+            //Item item;
+            string[] words = Item.LoadFromFile(1).First().Split(';');
+            Console.Write("\n\n\n" + words[2] + "\n");
+
+            QoL.Blockade();
+
 
             while (!gameover)
             {

@@ -33,11 +33,20 @@ namespace RougeMechsClasses
             if (firstSetup)
             {
                 stats.Setup();
+                armor = 0;
             }
+
+            stats.vit2 = stats.vit + stats.vit1;
+            stats.cap2 = stats.cap + stats.cap1;
+            stats.str2 = stats.str + stats.str1;
+            stats.agi2 = stats.agi + stats.agi1;
+            stats.spi2 = stats.spi + stats.spi1;
 
             stats.maxHP = stats.vit2 * 15;
             stats.maxMP = stats.cap2 * 10;
-            stats.maxShd = stats.cap2 * 2;
+            stats.maxShd = stats.cap2 * 3;
+
+            stats.shieldRegeneration = Convert.ToInt16(stats.cap2 * 0.5 + stats.spi2 * 0.25);
             if(stats.HP > stats.maxHP)
             {
                 stats.HP = stats.maxHP;
@@ -76,6 +85,12 @@ namespace RougeMechsClasses
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 4))); Console.Write(this.stats.shd);
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 4))); Console.Write(this.stats.maxShd);
+
+
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 6))); Console.Write(this.armor);
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(12, 6))); Console.Write("| " + stats.shieldRegeneration);
 
             Console.ForegroundColor = ConsoleColor.Red;
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 7))); Console.Write(this.stats.vit + "<" + stats.vit1 + "> (" + stats.vit2 + ")");
