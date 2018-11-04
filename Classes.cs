@@ -77,10 +77,15 @@ namespace RougeMechsClasses
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 4))); Console.Write(this.stats.shd);
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 4))); Console.Write(this.stats.maxShd);
 
+            Console.ForegroundColor = ConsoleColor.Red;
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 7))); Console.Write(this.stats.vit + "<" + stats.vit1 + "> (" + stats.vit2 + ")");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 8))); Console.Write(this.stats.cap + "<" + stats.cap1 + "> (" + stats.cap2 + ")");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 9))); Console.Write(this.stats.str + "<" + stats.str1 + "> (" + stats.str2 + ")");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 10))); Console.Write(this.stats.agi + "<" + stats.agi1 + "> (" + stats.agi2 + ")");
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 11))); Console.Write(this.stats.spi + "<" + stats.spi1 + "> (" + stats.spi2 + ")");
         }
         public void ChangeItem(int itemIndex, int newItemID)
