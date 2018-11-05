@@ -54,12 +54,12 @@ namespace RougeMechs
             int vara = 0;
 
             //Console.Clear();
-            
+
             //string[] words = Item.LoadFromFile(1).First().Split(';');
             //Console.Write("\n\n\n" + (2 + Convert.ToInt16(words[2])) + "\n" + words[2] + "\n\n\n");
 
             //QoL.Blockade();
-
+            Console.Write("  weight  " + player.weight);
 
             while (!gameover)
             {

@@ -15,19 +15,25 @@ namespace RougeMechsClasses
         public string name = "NONE";
 
         public RougeMechStats stats;
-        public int armor; //summary value of armor from equipment
+        public int armorValue; //summary value of armor from equipment
+        public int weight;
 
         public Vector2 position;
         public Vector2 oldPosition;
         public char icon;
 
+        Armor armor;
         Accessory accessory;
+
 
         protected SpiritMech() { }
         public SpiritMech(int maxHP, Vector2 position)
         {
             this.position = position;
+
+            armor.LoadFromFile(2);
             accessory.LoadFromFile(3);
+
             Update(true);
         }
         public void Update(bool firstSetup)
@@ -35,20 +41,31 @@ namespace RougeMechsClasses
             if (firstSetup)
             {
                 stats.Setup();
-                armor = 0;
+                armorValue = 0;
             }
 
-            stats.vit1 = accessory.vit;
-            stats.cap1 = accessory.cap;
-            stats.str1 = accessory.str;
-            stats.agi1 = accessory.agi;
-            stats.spi1 = accessory.spi;
+            weight = accessory.weight + armor.weight;
+            armorValue = armor.armor;
+
+            stats.vit1 = accessory.vit + armor.vit;
+            stats.cap1 = accessory.cap + armor.cap;
+            stats.str1 = accessory.str + armor.str;
+            stats.agi1 = accessory.agi + armor.agi;
+            stats.spi1 = accessory.spi + armor.spi;
+
+            stats.agi1 = 0; //DELET DIS
 
             stats.vit2 = stats.vit + stats.vit1;
             stats.cap2 = stats.cap + stats.cap1;
             stats.str2 = stats.str + stats.str1;
-            stats.agi2 = stats.agi + stats.agi1;
+            int AGI = stats.agi + stats.agi1;
             stats.spi2 = stats.spi + stats.spi1;
+
+            
+
+            stats.agi2 = Convert.ToInt16(AGI * (1 - (Convert.ToDouble( weight)/ (Convert.ToDouble(stats.str2) * 20))));
+
+            if (stats.agi2 < 0) { stats.agi2 = 0; }
 
             stats.maxHP = stats.vit2 * 15;
             stats.maxMP = stats.cap2 * 10;
@@ -96,7 +113,7 @@ namespace RougeMechsClasses
 
 
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 6))); Console.Write(this.armor);
+            QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 6))); Console.Write(this.armorValue);
             Console.ForegroundColor = ConsoleColor.Cyan;
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(12, 6))); Console.Write("| " + stats.shieldRegeneration);
 

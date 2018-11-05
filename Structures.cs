@@ -127,20 +127,48 @@ namespace RougeMechsStructures
     }
     public struct Accessory
     {
-        int slot;
-        int weight;
-        int price;
+        public int slot;
+        public int weight;
+        public int price;
 
         public int vit, cap, str, agi, spi;
 
         public void LoadFromFile(int ID)
         {
-            string[] stats = System.IO.File.ReadLines("Accessories.txt").Skip(ID).Take(1).First().Split(';');
+            string[] stats = System.IO.File.ReadLines("Accessories.txt").Skip(ID).Take(1).First().Split(';');//reads the item from .txt
+
+            weight = Convert.ToInt16(stats[2]);
+
             vit = Convert.ToInt16(stats[4]);
             cap = Convert.ToInt16(stats[5]);
             str = Convert.ToInt16(stats[6]);
             agi = Convert.ToInt16(stats[7]);
             spi = Convert.ToInt16(stats[8]);
+        }
+    }
+    public struct Armor
+    {
+        public int slot;
+        public int weight;
+        public int price;
+
+        public int vit, cap, str, agi, spi;
+
+        public int armor;
+
+        public void LoadFromFile(int ID)
+        {
+            string[] stats = System.IO.File.ReadLines("Armors.txt").Skip(ID).Take(1).First().Split(';');//reads the item from .txt
+
+            weight = Convert.ToInt16(stats[2]);
+
+            vit = Convert.ToInt16(stats[4]);
+            cap = Convert.ToInt16(stats[5]);
+            str = Convert.ToInt16(stats[6]);
+            agi = Convert.ToInt16(stats[7]);
+            spi = Convert.ToInt16(stats[8]);
+
+            armor = Convert.ToInt16(stats[9]);
         }
     }
     ///slots: none (only eq), hands, armor, core, repulsors, vision, accesories

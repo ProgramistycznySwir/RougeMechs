@@ -1,0 +1,5 @@
+Name of Item; slot; weight; price; vit; cap; str; agi; spi; armor
+Simple Leather Armor; 2; 20; 0;  0; 0; 0; 0; 0;  20
+Thick Leather Armor; 2; 40; 0;  0; 0; 0; 0; 0;  35
+Reinforced Leather Armor; 2; 35; 0;  0; 0; 0; 0; 0;  45
+HQ Leather Armor; 2; 20; 0;  0; 0; 0; 0; 0;  30
