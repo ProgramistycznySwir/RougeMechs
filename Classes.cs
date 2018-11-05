@@ -23,7 +23,7 @@ namespace RougeMechsClasses
         public char icon;
 
         Armor armor;
-        Accessory accessory;
+        Accessory[] accessory = new Accessory[2];
 
 
         protected SpiritMech() { }
@@ -31,8 +31,8 @@ namespace RougeMechsClasses
         {
             this.position = position;
 
-            armor.LoadFromFile(2);
-            accessory.LoadFromFile(3);
+            armor.LoadFromFile(5);
+            accessory[0].LoadFromFile(6);
 
             Update(true);
         }
@@ -42,28 +42,25 @@ namespace RougeMechsClasses
             {
                 stats.Setup();
                 armorValue = 0;
+                weight = 0;
             }
 
-            weight = accessory.weight + armor.weight;
+            weight = armor.weight + accessory[0].weight;
             armorValue = armor.armor;
 
-            stats.vit1 = accessory.vit + armor.vit;
-            stats.cap1 = accessory.cap + armor.cap;
-            stats.str1 = accessory.str + armor.str;
-            stats.agi1 = accessory.agi + armor.agi;
-            stats.spi1 = accessory.spi + armor.spi;
-
-            stats.agi1 = 0; //DELET DIS
+            stats.vit1 = armor.vit + accessory[0].vit;
+            stats.cap1 = armor.cap + accessory[0].cap;
+            stats.str1 = armor.str + accessory[0].str;
+            stats.agi1 = armor.agi + accessory[0].agi;
+            stats.spi1 = armor.spi + accessory[0].spi;            
 
             stats.vit2 = stats.vit + stats.vit1;
             stats.cap2 = stats.cap + stats.cap1;
             stats.str2 = stats.str + stats.str1;
             int AGI = stats.agi + stats.agi1;
-            stats.spi2 = stats.spi + stats.spi1;
+            stats.spi2 = stats.spi + stats.spi1;            
 
-            
-
-            stats.agi2 = Convert.ToInt16(AGI * (1 - (Convert.ToDouble( weight)/ (Convert.ToDouble(stats.str2) * 20))));
+            stats.agi2 = Convert.ToInt16(AGI * (1d - (Convert.ToDouble( weight)/ (Convert.ToDouble(stats.str2) * 20d))));
 
             if (stats.agi2 < 0) { stats.agi2 = 0; }
 
@@ -127,6 +124,17 @@ namespace RougeMechsClasses
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 10))); Console.Write(this.stats.agi + "<" + stats.agi1 + "> (" + stats.agi2 + ")");
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 11))); Console.Write(this.stats.spi + "<" + stats.spi1 + "> (" + stats.spi2 + ")");
+        }
+        public void ReceiveDmg(int dmg, int bluntDmg, int penetration)
+        {
+            int DMG;
+            if (penetration == 0) DMG = 0;
+            else
+                DMG = Convert.ToInt16(dmg * (1d - (Convert.ToDouble(armorValue) / Convert.ToDouble(penetration))));
+            if (DMG > 0) { stats.HP -= DMG; }
+
+            DMG = bluntDmg - stats.str2;
+            if (DMG > 0) { stats.HP -= DMG; }
         }
         public void ChangeItem(int itemIndex, int newItemID)
         {

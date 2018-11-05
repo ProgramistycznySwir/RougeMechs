@@ -3,3 +3,4 @@ Simple Leather Armor; 2; 20; 0;  0; 0; 0; 0; 0;  20
 Thick Leather Armor; 2; 40; 0;  0; 0; 0; 0; 0;  35
 Reinforced Leather Armor; 2; 35; 0;  0; 0; 0; 0; 0;  45
 HQ Leather Armor; 2; 20; 0;  0; 0; 0; 0; 0;  30
+Simple Robe; 2; 15; 0;  0; 2; 0; 0; 1;  5

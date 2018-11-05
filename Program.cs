@@ -94,6 +94,13 @@ namespace RougeMechs
                                 player.MoveTo(new Vector2(Vector2.SumUp(player.position, new Vector2(1, 0))));
                                 break;
                             }
+                        case 'o':
+                            {
+                                player.ReceiveDmg(10, 6, 5);
+                                player.Update(false);
+                                player.DisplayStats(new Vector2(150, 5));
+                                break;
+                            }
                         default:
                             {
                                 Console.WriteLine("Ain't done a shit");
