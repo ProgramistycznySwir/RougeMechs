@@ -7,6 +7,7 @@ using RougeMechs;
 
 using RougeMechsStructures;
 using RougeMechsQol;
+using RougeMechsGraphics;
 
 namespace RougeMechsClasses
 {
@@ -173,14 +174,15 @@ namespace RougeMechsClasses
         }
         public void ReceiveDmg(int dmg, int bluntDmg, int penetration)
         {
-            int DMG;
+            int DMG, DMGb; //dmg after calculations
             if (penetration == 0) DMG = 0;
             else
                 DMG = Convert.ToInt16(dmg * (1d - (Convert.ToDouble(armorValue) / Convert.ToDouble(penetration))));
             if (DMG > 0) { stats.HP -= DMG; }
 
-            DMG = bluntDmg - stats.str2;
-            if (DMG > 0) { stats.HP -= DMG; }
+            DMGb = Convert.ToInt16(bluntDmg - stats.str2 * 0.5d);
+            if (DMGb > 0) { stats.HP -= DMGb; }
+            Log.Write("BattleMaster", name + " Received: " + (DMG + DMGb) + " dmg (normal: "+ DMG + " blunt: " + DMGb + ")");
         }
         public void Attack()
         {
