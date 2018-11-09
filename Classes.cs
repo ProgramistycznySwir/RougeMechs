@@ -10,18 +10,8 @@ using RougeMechsQol;
 
 namespace RougeMechsClasses
 {
-    public class SpiritMech
+    public class SpiritMech : PrimitiveEntity
     {
-        public string name = "NONE";
-
-        public RougeMechStats stats;
-        public int armorValue; //summary value of armor from equipment
-        public int weight;
-
-        public Vector2 position;
-        public Vector2 oldPosition;
-        public char icon;
-
         Armor armor;
         Accessory[] accessory = new Accessory[2];
 
@@ -36,7 +26,7 @@ namespace RougeMechsClasses
 
             Update(true);
         }
-        public void Update(bool firstSetup)
+        public new void Update(bool firstSetup)
         {
             if (firstSetup)
             {
@@ -80,6 +70,60 @@ namespace RougeMechsClasses
                 stats.MP = stats.maxMP;
             }
         }
+        
+        public void ChangeItem(int itemIndex, int newItemID)
+        {
+
+        }        
+    }
+    public class PrimitiveEntity
+    {
+        public string name = "NONE";
+
+        public RougeMechStats stats;
+        public int armorValue; //summary value of armor from equipment
+        public int weight;
+
+        public Vector2 position;
+        public Vector2 oldPosition;
+        public char icon;
+
+        public void Update(bool firstSetup)
+        {
+            if (firstSetup)
+            {
+                stats.Setup();
+                armorValue = 0;
+                weight = 0;
+            }
+
+            stats.vit2 = stats.vit + stats.vit1;
+            stats.cap2 = stats.cap + stats.cap1;
+            stats.str2 = stats.str + stats.str1;
+            int AGI = stats.agi + stats.agi1;
+            stats.spi2 = stats.spi + stats.spi1;
+
+            stats.agi2 = Convert.ToInt16(AGI * (1d - (Convert.ToDouble(weight) / (Convert.ToDouble(stats.str2) * 20d))));
+
+            if (stats.agi2 < 0) { stats.agi2 = 0; }
+
+            stats.maxHP = stats.vit2 * 15;
+            stats.maxMP = stats.cap2 * 10;
+            stats.maxShd = stats.cap2 * 3;
+
+            stats.shieldRegeneration = Convert.ToInt16(stats.cap2 * 0.5 + stats.spi2 * 0.25);
+            if (stats.HP > stats.maxHP)
+            {
+                stats.HP = stats.maxHP;
+            }
+
+            if (firstSetup)
+            {
+                stats.HP = stats.maxHP;
+                stats.MP = stats.maxMP;
+            }            
+        }
+
         public void MoveTo(Vector2 newPosition)
         {
             QoL.GotoXY(oldPosition); Console.Write(" ");
@@ -135,10 +179,6 @@ namespace RougeMechsClasses
 
             DMG = bluntDmg - stats.str2;
             if (DMG > 0) { stats.HP -= DMG; }
-        }
-        public void ChangeItem(int itemIndex, int newItemID)
-        {
-
         }
         public void Attack()
         {
