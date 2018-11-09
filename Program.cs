@@ -34,7 +34,7 @@ namespace RougeMechs
             bool gameover = false;
             bool endTurn = false;
 
-            //Draw.Kolorki(); //19+ 16:34
+            //Draw.Kolorki(); //19+ 17:20
 
             Console.BufferHeight = screenSize.y;
 
@@ -42,7 +42,8 @@ namespace RougeMechs
 
             Vector2 frameSize = new Vector2(124,62);
             Draw.Frame(Vector2.zero, frameSize);
-            
+
+            Log.Setup(new Vector2(150, 0));
 
             SpiritMech player = new SpiritMech(20, new Vector2(5, 5));
             player.icon = '@';
@@ -51,9 +52,7 @@ namespace RougeMechs
             Draw.SMStats(new Vector2(125, 0));
             player.DisplayStats(new Vector2(125, 0));
 
-            int vara = 0;
-
-            Log.Setup(new Vector2(150, 0));
+            int vara = 0;            
 
             //Console.Clear();
 
