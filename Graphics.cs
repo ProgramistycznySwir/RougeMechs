@@ -280,10 +280,10 @@ namespace RougeMechsGraphics
             Draw.Frame(ULCornerPosition, size);
 
             Write(nameInLogs, "Log screen size: " + size.x + " ; " + size.y);
-            Write("sum text", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+            Write("sum text", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
             TEST();
         }
-        public static void Write(string text) ///attempt to make LogScreen 2.0
+        public static void Write(string text) ///attempt to make LogScreen 2.0 (backup)
         {
 
             if (text.Length > size.x - 2)
@@ -315,31 +315,33 @@ namespace RougeMechsGraphics
             int titleLenght = writer.Length + 2;
             QoL.GotoXY(ULCornerPosition.x + 1, lastLogLine);
             Console.Write(writer + ": ");
-            if(text.Length > size.x - 2)
+            if(text.Length > size.x - 2 - titleLenght)
             {
                 int firstTime = 1;
                 //IEnumerable<char> text2 = text.Take(size.x - 1).ToArray();
-                Char[] text2 = text.Take(size.x - 1 - titleLenght).ToArray();                
-                Console.Write(text2);
-                text2 = text.Skip(size.x - 1 - titleLenght).Take(size.x - 1).ToArray();
+                Char[] text2 = text.Take(size.x - 1 - titleLenght).ToArray();
+                //Console.Write(text2);
+                //text2 = text.Skip(size.x - 1 - titleLenght).Take(size.x - 1 - titleLenght).ToArray();
+                //lastLogLine++;
                 int iteration = 0;
-                while (text2.Length >= size.x - 2 - titleLenght * firstTime)
+                while (text2.Length >= size.x - 3 - titleLenght * firstTime)
                 {
                     iteration++;
-                    QoL.GotoXY(ULCornerPosition.x + 1, lastLogLine);
-                    Console.Write(" ");
+                    QoL.GotoXY(ULCornerPosition.x + 1 + titleLenght * firstTime, lastLogLine);
+                    if (firstTime == 0) Console.Write("  "); //false only in first iteration
                     Console.Write(text2);
-                    text2 = text.Skip((size.x - 2) * iteration + titleLenght).Take(size.x - 2 - titleLenght * firstTime).ToArray();
+                    text2 = text.Skip((size.x - 3) * iteration - titleLenght + 2).Take(size.x - 3).ToArray();
                     lastLogLine++;
                     firstTime = 0;
                 }
                 QoL.GotoXY(ULCornerPosition.x + 1, lastLogLine);
-                text2 = text.Skip((size.x - 1) * iteration + titleLenght).Take(size.x - 2).ToArray();
+                text2 = text.Skip((size.x - 3) * iteration - titleLenght + 2).Take(size.x - 3).ToArray();
+                Console.Write("  ");
                 Console.Write(text2);
             }
             else
             {
-                QoL.GotoXY(ULCornerPosition.x + 1, lastLogLine);
+                //QoL.GotoXY(ULCornerPosition.x + 1, lastLogLine);
                 Console.Write(text);
             }
             lastLogLine++;

@@ -192,5 +192,5 @@ namespace RougeMechsClasses
     public class Enemy : SpiritMech
     {
 
-    }    
+    }
 }

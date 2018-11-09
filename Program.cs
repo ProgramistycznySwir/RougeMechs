@@ -34,7 +34,7 @@ namespace RougeMechs
             bool gameover = false;
             bool endTurn = false;
 
-            //Draw.Kolorki(); //20:54
+            //Draw.Kolorki(); //23:10
 
             Console.BufferHeight = screenSize.y;
 
