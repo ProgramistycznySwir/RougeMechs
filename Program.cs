@@ -100,7 +100,7 @@ namespace RougeMechs
                             {
                                 player.ReceiveDmg(10, 6, 5);
                                 player.Update(false);
-                                player.DisplayStats(new Vector2(150, 5));
+                                player.DisplayStats(new Vector2(125, 0));
                                 break;
                             }
                         default:

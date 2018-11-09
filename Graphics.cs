@@ -277,13 +277,23 @@ namespace RougeMechsGraphics
             size = new Vector2(235 - UpperLeftCornerPosition.x, 62);
             ULCornerPosition = UpperLeftCornerPosition;
             Draw.Frame(ULCornerPosition, size);
-            
-            Write("///Log screen size: " + size.x + " ; " + size.y);
+
+            //Write("///Log screen size: " + size.x + " ; " + size.y);
+            Write("Mark Edward Fischbach (born June 28, 1989),[1] known online as Markiplier, (or simply Mark), is an American YouTuber. Originally from Honolulu, Hawaii,[2] he began his career in Cincinnati, Ohio, and is currently based in Los Angeles, California.[3]As of August 2018, his channel has over 9 billion total video views and 22 million subscribers,[4][5] and is currently the 36th most - subscribed channel on YouTube.[6] Fischbach specializes in Let's Play videos, commonly of survival horror video games.[7]");
         }
         public static void Write(string text)
         {
-            QoL.GotoXY(ULCornerPosition.x + 1, lastLogLine);
-            Console.Write(text);
+            
+            if(text.Length > size.x - 2)
+            {
+                QoL.GotoXY(ULCornerPosition.x + 1, lastLogLine);
+                Console.Write("LogSystem: Sum lung text...");
+            }
+            else
+            {
+                QoL.GotoXY(ULCornerPosition.x + 1, lastLogLine);
+                Console.Write(text);
+            }            
         }
     }
 }
