@@ -97,7 +97,8 @@ namespace RougeMechs
                             }
                         case 'o':
                             {
-                                player.ReceiveDmg(10, 6, 5);
+                                Random rnd = new Random();
+                                player.ReceiveDmg(10, rnd.Next(4,10), 5);
                                 player.Update(false);
                                 player.DisplayStats(new Vector2(125, 0));
                                 break;

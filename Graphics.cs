@@ -345,6 +345,7 @@ namespace RougeMechsGraphics
                 Console.Write(text);
             }
             lastLogLine++;
+            if (lastLogLine >= size.y - 1) lastLogLine = 1;
         }
         public static void TEST()
         {
