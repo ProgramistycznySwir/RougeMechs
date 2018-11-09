@@ -263,8 +263,9 @@ namespace RougeMechsGraphics
     /// </summary>
     public static class Log
     {
+        static string nameInLogs = "LogSystem";
         static Vector2 ULCornerPosition;
-        static Vector2 size;
+        static Vector2 size;        
         static int lastLogLine = 1;
         public static void Setup(Vector2 UpperLeftCornerPosition, Vector2 sizeOfLogScreen)
         {
@@ -278,7 +279,7 @@ namespace RougeMechsGraphics
             ULCornerPosition = UpperLeftCornerPosition;
             Draw.Frame(ULCornerPosition, size);
 
-            //Write("LogSystem: Log screen size: " + size.x + " ; " + size.y);
+            Write(nameInLogs,"Log screen size: " + size.x + " ; " + size.y);
             Write("**********************************************************************************************************************************************************************************************");
             Write("It's not a story the Jedi would tell you. It's a Sith legend. Darth Plagueis was a Dark Lord of the Sith, so powerful and so wise he could use the Force to influence the midi-chlorians to create life. ... He had such a knowledge of the dark side that he could even keep the ones he cared about from dying.");
             Write("Mark Edward Fischbach (born June 28, 1989),[1] known online as Markiplier, (or simply Mark), is an American YouTuber. Originally from Honolulu, Hawaii,[2] he began his career in Cincinnati, Ohio, and is currently based in Los Angeles, California.[3]As of August 2018, his channel has over 9 billion total video views and 22 million subscribers,[4][5] and is currently the 36th most - subscribed channel on YouTube.[6] Fischbach specializes in Let's Play videos, commonly of survival horror video games.[7]");
@@ -310,7 +311,7 @@ namespace RougeMechsGraphics
             }
             lastLogLine++;
         }
-        public static void Write(string text, bool DeleteThisIfYouFailToMakeLogScreen2)
+        public static void Write(string writer,  string text)
         {
             
             if(text.Length > size.x - 2)
@@ -322,18 +323,18 @@ namespace RougeMechsGraphics
                 {
                     iteration++;
                     QoL.GotoXY(ULCornerPosition.x + 1, lastLogLine);
-                    Console.Write(text2);
+                    Console.Write(writer + ": " + text2);
                     text2 = text.Skip((size.x - 1) * iteration).Take(size.x - 1).ToArray();
                     lastLogLine++;
                 }
                 QoL.GotoXY(ULCornerPosition.x + 1, lastLogLine);
                 text2 = text.Skip((size.x - 1) * iteration).Take(size.x - 1).ToArray();
-                Console.Write(text2);
+                Console.Write(writer + ": " + text2);
             }
             else
             {
                 QoL.GotoXY(ULCornerPosition.x + 1, lastLogLine);
-                Console.Write(text);
+                Console.Write(writer + ": " + text);
             }
             lastLogLine++;
         }
