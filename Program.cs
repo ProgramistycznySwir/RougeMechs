@@ -34,7 +34,7 @@ namespace RougeMechs
             bool gameover = false;
             bool endTurn = false;
 
-            //Draw.Kolorki(); //21:56
+            //Draw.Kolorki(); //19+ 16:34
 
             Console.BufferHeight = screenSize.y;
 
@@ -48,10 +48,12 @@ namespace RougeMechs
             player.icon = '@';
             player.Update(true);
 
-            Draw.SMStats(new Vector2(150, 5), player);
-            player.DisplayStats(new Vector2(150, 5));
+            Draw.SMStats(new Vector2(125, 0));
+            player.DisplayStats(new Vector2(125, 0));
 
             int vara = 0;
+
+            Log.Setup(new Vector2(150, 0));
 
             //Console.Clear();
 
@@ -59,7 +61,7 @@ namespace RougeMechs
             //Console.Write("\n\n\n" + (2 + Convert.ToInt16(words[2])) + "\n" + words[2] + "\n\n\n");
 
             //QoL.Blockade();
-            Console.Write("  weight  " + player.weight);
+            //Console.Write("  weight  " + player.weight);
 
             while (!gameover)
             {

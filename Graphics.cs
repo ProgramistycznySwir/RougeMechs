@@ -30,6 +30,7 @@ namespace RougeMechsGraphics
             Vector2 pos;
             pos.x = ULCornerPosition.x; //simplification  <QoL> (it has not that big impact on performance and make it easier to read, maybe in later versions i'll optimize it)
             pos.y = ULCornerPosition.y;
+            size = Vector2.SumUp(size, ULCornerPosition);
 
             while (pos.y <= size.y)
             {
@@ -52,7 +53,7 @@ namespace RougeMechsGraphics
         /// </summary>
         ///Draws stats table and shows automatically shows values (i should move it somwhere else...)
         /// </summary>
-        public static void SMStats(Vector2 ULCornerPosition, SpiritMech sm)
+        public static void SMStats(Vector2 ULCornerPosition)
         {
             QoL.GotoXY(ULCornerPosition); Console.Write("╔═══════════════════╗");
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 1))); Console.Write("║                   ║");
@@ -255,6 +256,34 @@ namespace RougeMechsGraphics
             Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine("Red");
             Console.ForegroundColor = ConsoleColor.White; Console.WriteLine("White");
             Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine("Yellow");
+        }        
+    }
+    /// </summary>
+    ///Log console
+    /// </summary>
+    public static class Log
+    {
+        static Vector2 ULCornerPosition;
+        static Vector2 size;
+        static int lastLogLine = 1;
+        public static void Setup(Vector2 UpperLeftCornerPosition, Vector2 sizeOfLogScreen)
+        {
+            size = sizeOfLogScreen;
+            ULCornerPosition = UpperLeftCornerPosition;
+            Draw.Frame(ULCornerPosition, size);
+        }
+        public static void Setup(Vector2 UpperLeftCornerPosition)
+        {
+            size = new Vector2(235 - UpperLeftCornerPosition.x, 62);
+            ULCornerPosition = UpperLeftCornerPosition;
+            Draw.Frame(ULCornerPosition, size);
+            
+            Write("///Log screen size: " + size.x + " ; " + size.y);
+        }
+        public static void Write(string text)
+        {
+            QoL.GotoXY(ULCornerPosition.x + 1, lastLogLine);
+            Console.Write(text);
         }
     }
 }

@@ -168,6 +168,8 @@ namespace RougeMechsClasses
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 10))); Console.Write(this.stats.agi + "<" + stats.agi1 + "> (" + stats.agi2 + ")");
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             QoL.GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 11))); Console.Write(this.stats.spi + "<" + stats.spi1 + "> (" + stats.spi2 + ")");
+
+            Console.ResetColor();
         }
         public void ReceiveDmg(int dmg, int bluntDmg, int penetration)
         {
