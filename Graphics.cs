@@ -279,7 +279,7 @@ namespace RougeMechsGraphics
             ULCornerPosition = UpperLeftCornerPosition;
             Draw.Frame(ULCornerPosition, size);
 
-            Write(nameInLogs, "Log screen size: " + size.x + " ; " + size.y);
+            Write(nameInLogs, "Log screen size: " + (size.x - 2) + " ; " + (size.y - 2));
             Write("sum text", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
             TEST();
         }

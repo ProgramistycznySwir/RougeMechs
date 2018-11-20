@@ -46,5 +46,29 @@ namespace RougeMechsQol
                 Console.ReadKey();
             }
         }
+        /// </summary>
+        ///Writes given amount of spaces, and then go to position start of created space
+        /// </summary> 
+        public static void Space(int amountOfSpaces)
+        {
+            Vector2 pos = new Vector2(Console.CursorLeft, Console.CursorTop);
+            while (amountOfSpaces > 0)
+            {
+                Console.Write(" ");
+                amountOfSpaces--;
+            }
+            GotoXY(pos);
+        }
+        /// </summary>
+        ///Writes given amount of phrases
+        /// </summary> 
+        public static void WriteThisMuch(string phraseToWrite,int amountOfPhrases)
+        {
+            while (amountOfPhrases > 0)
+            {
+                Console.Write(phraseToWrite);
+                amountOfPhrases--;
+            }
+        }
     }
 }

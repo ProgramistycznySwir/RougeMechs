@@ -117,3 +117,7 @@ namespace RougeMechs
         }
     }    
 }
+/*
+Fixed a bug with weird numbers showing in stats when they are lower than 100
+(console was not cleaning numbers)
+*/
