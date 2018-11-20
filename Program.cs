@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using RougeMechsClasses;
 using RougeMechsStructures;
 using RougeMechsGraphics;
-using RougeMechsQol;
+using static RougeMechsQol.QoL;
 
 namespace RougeMechs
 {
@@ -113,7 +113,7 @@ namespace RougeMechs
                 }
                 
             }
-            QoL.Blockade();
+            Blockade();
         }
     }    
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using RougeMechsGraphics;
-using RougeMechsQol;
+using static RougeMechsQol.QoL;
 using RougeMechsClasses;
 
 namespace RougeMechsStructures
