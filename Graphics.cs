@@ -55,19 +55,19 @@ namespace RougeMechsGraphics
         /// </summary>
         public static void SMStats(Vector2 ULCornerPosition)
         {
-            GotoXY(ULCornerPosition); Console.Write("╔═══════════════════╗");
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 1))); Console.Write("║                   ║");
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 2))); Console.Write("║Health:      /     ║");
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 3))); Console.Write("║Spirit:      /     ║");
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 4))); Console.Write("║Shield:      /     ║");
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 5))); Console.Write("╠═══════════════════╣");
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 6))); Console.Write("║Arm:               ║");
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 7))); Console.Write("║Vit:               ║");
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 8))); Console.Write("║Cap:               ║");
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 9))); Console.Write("║Str:               ║");
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 10))); Console.Write("║Agi:               ║");
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 11))); Console.Write("║Spi:               ║");
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 12))); Console.Write("╚═══════════════════╝");
+            GotoXY(ULCornerPosition); Console.Write("╔═════════════════════════╗");
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 1))); Console.Write("║                         ║");
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 2))); Console.Write("║Health:         /        ║");
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 3))); Console.Write("║Spirit:         /        ║");
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 4))); Console.Write("║Shield:         /        ║");
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 5))); Console.Write("╠═════════════════════════╣");
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 6))); Console.Write("║Arm:                     ║");
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 7))); Console.Write("║Vit:                     ║");
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 8))); Console.Write("║Cap:                     ║");
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 9))); Console.Write("║Str:                     ║");
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 10))); Console.Write("║Agi:                     ║");
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 11))); Console.Write("║Spi:                     ║");
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(0, 12))); Console.Write("╚═════════════════════════╝");
             
             //GotoXY(x, y + 2); Console.Write("╠═════════════════════════════╬═════╬═══╣");
             //GotoXY(x, y + vary + 16); Console.Write("║─────┼───┼───┼───┼───┼───┼───║");

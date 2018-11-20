@@ -142,33 +142,33 @@ namespace RougeMechsClasses
         }
         public void DisplayStats(Vector2 ULCornerPosition)
         {
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(2, 1))); Space(18); Console.Write(name); // names of creatures cant be longer than 18
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(2, 1))); Space(24); Console.Write(name); // names of creatures cant be longer than 18
             Console.ForegroundColor = ConsoleColor.DarkRed;
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 2))); Space(5); Console.Write(this.stats.HP);
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 2))); Space(5); Console.Write(this.stats.maxHP);
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 2))); Space(8); Console.Write(this.stats.HP);
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(18, 2))); Space(8); Console.Write(this.stats.maxHP);
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 3))); Space(5); Console.Write(this.stats.MP);
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 3))); Space(5); Console.Write(this.stats.maxMP);
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 3))); Space(8); Console.Write(this.stats.MP);
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(18, 3))); Space(8); Console.Write(this.stats.maxMP);
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 4))); Space(5); Console.Write(this.stats.shd);
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 4))); Space(5); Console.Write(this.stats.maxShd);
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(9, 4))); Space(8); Console.Write(this.stats.shd);
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(18, 4))); Space(8); Console.Write(this.stats.maxShd);
 
 
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 6))); Space(5); Console.Write(this.armorValue);
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 6))); Space(8); Console.Write(this.armorValue);
             Console.ForegroundColor = ConsoleColor.Cyan;
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(12, 6))); Space(7); Console.Write("| " + stats.shieldRegeneration); //space is bigger couse there is "| "
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(15, 6))); Space(10); Console.Write("| " + stats.shieldRegeneration); //space is bigger couse there is "| "
 
             Console.ForegroundColor = ConsoleColor.Red;
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 7))); Space(14); Console.Write(this.stats.vit + "<" + stats.vit1 + "> (" + stats.vit2 + ")");
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 7))); Space(20); Console.Write(this.stats.vit + "<" + stats.vit1 + "> (" + stats.vit2 + ")");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 8))); Space(14); Console.Write(this.stats.cap + "<" + stats.cap1 + "> (" + stats.cap2 + ")");
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 8))); Space(20); Console.Write(this.stats.cap + "<" + stats.cap1 + "> (" + stats.cap2 + ")");
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 9))); Space(14); Console.Write(this.stats.str + "<" + stats.str1 + "> (" + stats.str2 + ")");
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 9))); Space(20); Console.Write(this.stats.str + "<" + stats.str1 + "> (" + stats.str2 + ")");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 10))); Space(14); Console.Write(this.stats.agi + "<" + stats.agi1 + "> (" + stats.agi2 + ")");
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 10))); Space(20); Console.Write(this.stats.agi + "<" + stats.agi1 + "> (" + stats.agi2 + ")");
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 11))); Space(14); Console.Write(this.stats.spi + "<" + stats.spi1 + "> (" + stats.spi2 + ")");
+            GotoXY(Vector2.SumUp(ULCornerPosition, new Vector2(6, 11))); Space(20); Console.Write(this.stats.spi + "<" + stats.spi1 + "> (" + stats.spi2 + ")");
 
             Console.ResetColor();
         }

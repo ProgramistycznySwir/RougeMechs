@@ -40,8 +40,8 @@ namespace RougeMechs
 
             Console.Clear();
 
-            Vector2 frameSize = new Vector2(124,62);
-            Draw.Frame(Vector2.zero, frameSize);
+            Vector2 frameSize = new Vector2(122,62);
+            Draw.Frame(Vector2.zero, frameSize); // drawing map
 
             Log.Setup(new Vector2(150, 0));
 
@@ -49,8 +49,8 @@ namespace RougeMechs
             player.icon = '@';
             player.Update(true);
 
-            Draw.SMStats(new Vector2(125, 0));
-            player.DisplayStats(new Vector2(125, 0));
+            Draw.SMStats(new Vector2(123, 0));
+            player.DisplayStats(new Vector2(123, 0));
 
             int vara = 0;            
 
