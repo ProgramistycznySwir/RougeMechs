@@ -54,7 +54,7 @@ namespace RougeMechsQol
             Vector2 pos = new Vector2(Console.CursorLeft, Console.CursorTop);
             while (amountOfSpaces > 0)
             {
-                Console.Write("o");
+                Console.Write(" ");
                 amountOfSpaces--;
             }
             GotoXY(pos);
