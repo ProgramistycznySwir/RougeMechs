@@ -13,7 +13,7 @@ namespace RougeMechs
 {
     class Program
     {
-        
+        public static int targetIndex;
 
         public static Vector2 screenSize = new Vector2(237, 63);
 
@@ -48,6 +48,11 @@ namespace RougeMechs
             SpiritMech player = new SpiritMech(20, new Vector2(5, 5));
             player.icon = '@';
             player.Update(true);
+
+            
+            IList<SpiritMech> enemies;
+            enemies.Add(new SpiritMech(20, new Vector2(10, 10)));
+            enemies.First().Update(true);
 
             Draw.SMStats(new Vector2(123, 0));
             player.DisplayStats(new Vector2(123, 0));
@@ -100,7 +105,7 @@ namespace RougeMechs
                                 Random rnd = new Random();
                                 player.ReceiveDmg(10, rnd.Next(4,10), 5);
                                 player.Update(false);
-                                player.DisplayStats(new Vector2(125, 0));
+                                player.DisplayStats(new Vector2(123, 0));
                                 break;
                             }
                         default:
