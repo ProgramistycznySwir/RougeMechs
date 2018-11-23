@@ -86,22 +86,22 @@ namespace RougeMechs
                     {
                         case 'w':
                             {
-                                player.MoveTo(new Vector2(Vector2.SumUp(player.position, new Vector2(0, -2))));
+                                player.MoveTo(player.position + new Vector2(0, -2));
                                 break;
                             }
                         case 's':
                             {
-                                player.MoveTo(new Vector2(Vector2.SumUp(player.position, new Vector2(0, 1))));
+                                player.MoveTo(player.position + new Vector2(0, 1));
                                 break;
                             }
                         case 'a':
                             {
-                                player.MoveTo(new Vector2(Vector2.SumUp(player.position, new Vector2(-1, 0))));
+                                player.MoveTo(player.position + new Vector2(-1, 0));
                                 break;
                             }
                         case 'd':
                             {
-                                player.MoveTo(new Vector2(Vector2.SumUp(player.position, new Vector2(1, 0))));
+                                player.MoveTo(player.position + new Vector2(1, 0));
                                 break;
                             }
                         case 'o':
@@ -111,7 +111,7 @@ namespace RougeMechs
                                 player.Update(false);
                                 player.DisplayStats(new Vector2(123, 0));
 
-                                enemies.First().MoveTo(Vector2.SumUp(enemies.First().position, new Vector2(1, 0)));
+                                enemies.First().MoveTo(enemies.First().position + new Vector2(1, 0));
                                 break;
                             }
                         default:

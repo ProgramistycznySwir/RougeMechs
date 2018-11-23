@@ -55,14 +55,7 @@ namespace RougeMechsStructures
             double y = Math.Abs(this.y - vectorToCompare.y);
 
             return Convert.ToSingle(Math.Pow(x + y, 2));
-        }
-        /// <summary>
-        ///Returns Vector2 which is sum of 2 Vector2 structs
-        /// </summary>
-        public static Vector2 SumUp(Vector2 v1, Vector2 v2)
-        {
-            return new Vector2(v1.x + v2.x, v1.y + v2.y);
-        }
+        }        
         public static Vector2 operator+(Vector2 v1, Vector2 v2)
         {
             return new Vector2(v1.x + v2.x, v1.y + v2.y);
