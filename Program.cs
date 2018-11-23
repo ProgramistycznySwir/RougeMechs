@@ -34,7 +34,7 @@ namespace RougeMechs
             bool gameover = false;
             bool endTurn = false;
 
-            //Draw.Kolorki(); //23:10
+            //Draw.Kolorki(); //17:40
 
             Console.BufferHeight = screenSize.y;
 
@@ -49,9 +49,10 @@ namespace RougeMechs
             player.icon = '@';
             player.Update(true);
 
-            
-            IList<SpiritMech> enemies;
+            List<SpiritMech> enemies = new List<SpiritMech>();
+            //IList<SpiritMech> enemies = new SpiritMech(20, new Vector2(10, 10));
             enemies.Add(new SpiritMech(20, new Vector2(10, 10)));
+            enemies.First().icon = '&';
             enemies.First().Update(true);
 
             Draw.SMStats(new Vector2(123, 0));
@@ -106,6 +107,8 @@ namespace RougeMechs
                                 player.ReceiveDmg(10, rnd.Next(4,10), 5);
                                 player.Update(false);
                                 player.DisplayStats(new Vector2(123, 0));
+
+                                enemies.First().MoveTo(Vector2.SumUp(enemies.First().position, new Vector2(1, 0)));
                                 break;
                             }
                         default:

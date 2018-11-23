@@ -4,8 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RougeMechs
+namespace RougeMechsDataStructures
 {
+    public class List
+    {
+
+    }
+
     class RougeMechsDataStructures
     {
     }
