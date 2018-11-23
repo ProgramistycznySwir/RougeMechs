@@ -60,7 +60,7 @@ namespace RougeMechs
 
             //enemies.First().Do
 
-            int vara = 0;
+            int vara = 0;            
 
             //Console.Clear();
 

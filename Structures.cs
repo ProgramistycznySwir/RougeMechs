@@ -16,7 +16,7 @@ namespace RougeMechsStructures
         /// <summary>
         /// Static variable set to 0; 0
         /// </summary>
-        public static Vector2 zero = new Vector2(0, 0);
+        public readonly static Vector2 zero = new Vector2(0, 0);
 
         public Vector2(int x, int y)
         {
@@ -56,9 +56,17 @@ namespace RougeMechsStructures
 
             return Convert.ToSingle(Math.Pow(x + y, 2));
         }        
-        public static Vector2 operator+(Vector2 v1, Vector2 v2)
+        public static Vector2 operator +(Vector2 v1, Vector2 v2)
         {
             return new Vector2(v1.x + v2.x, v1.y + v2.y);
+        }
+        public static Vector2 operator -(Vector2 v1, Vector2 v2)
+        {
+            return new Vector2(v1.x - v2.x, v1.y - v2.y);
+        }
+        public static Vector2 operator *(Vector2 v1, float a)
+        {
+            return new Vector2(Convert.ToInt16(v1.x * a), Convert.ToInt16(v1.y * a));
         }
     }
     public struct RougeMechStats
