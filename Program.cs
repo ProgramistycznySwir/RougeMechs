@@ -34,7 +34,7 @@ namespace RougeMechs
             bool gameover = false;
             bool endTurn = false;
 
-            //Draw.Kolorki(); //17:40
+            //Draw.Kolorki(); //2030
 
             Console.BufferHeight = screenSize.y;
 
@@ -48,6 +48,7 @@ namespace RougeMechs
             SpiritMech player = new SpiritMech(20, new Vector2(5, 5));
             player.icon = '@';
             player.Update(true);
+            player.name = "Bal'Abadoth";
 
             List<PrimitiveEntity> enemies = new List<PrimitiveEntity>();
             enemies.Add(new SpiritMech(20, new Vector2(10, 10)));
@@ -56,6 +57,8 @@ namespace RougeMechs
 
             Draw.SMStats(new Vector2(123, 0));
             player.DisplayStats(new Vector2(123, 0));
+
+            //enemies.First().Do
 
             int vara = 0;
 
