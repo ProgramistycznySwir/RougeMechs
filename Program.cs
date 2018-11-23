@@ -49,8 +49,7 @@ namespace RougeMechs
             player.icon = '@';
             player.Update(true);
 
-            List<SpiritMech> enemies = new List<SpiritMech>();
-            //IList<SpiritMech> enemies = new SpiritMech(20, new Vector2(10, 10));
+            List<PrimitiveEntity> enemies = new List<PrimitiveEntity>();
             enemies.Add(new SpiritMech(20, new Vector2(10, 10)));
             enemies.First().icon = '&';
             enemies.First().Update(true);
@@ -58,7 +57,7 @@ namespace RougeMechs
             Draw.SMStats(new Vector2(123, 0));
             player.DisplayStats(new Vector2(123, 0));
 
-            int vara = 0;            
+            int vara = 0;
 
             //Console.Clear();
 
@@ -67,6 +66,7 @@ namespace RougeMechs
 
             //QoL.Blockade();
             //Console.Write("  weight  " + player.weight);
+            
 
             while (!gameover)
             {
