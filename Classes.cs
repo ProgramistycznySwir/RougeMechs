@@ -89,6 +89,8 @@ namespace RougeMechsClasses
         public Vector2 oldPosition;
         public char icon;
 
+        public List<Attack> attacks = new List<Attack>();
+
         public void Update(bool firstSetup)
         {
             if (firstSetup)
@@ -190,11 +192,32 @@ namespace RougeMechsClasses
         }
 
         
+        public void LoadFromFile(int ID)
+        {
+            IEnumerable<string> statsLoaded = System.IO.File.ReadLines("Accessories.txt").Skip(ID*3).Take(3);//reads the enemy info from .txt
+            string[][] stats = new string[][]
+            {
+                statsLoaded.First().Split(';'),
+                statsLoaded.Skip(1).First().Split(';'),
+                statsLoaded.Skip(2).First().Split(';')
+            };
 
-        //sealed public void DoShit()
-        //{
-        //    Console.WriteLine("Doin' Shit");
-        //}
+            this.name = stats[0][1];
+
+            this.stats.vit = Convert.ToInt16(stats[1][0]);
+            this.stats.cap = Convert.ToInt16(stats[1][1]);
+            this.stats.str = Convert.ToInt16(stats[1][2]);
+            this.stats.agi = Convert.ToInt16(stats[1][3]);
+            this.stats.spi = Convert.ToInt16(stats[1][4]);
+            this.armorValue = Convert.ToInt16(stats[1][5]);
+
+            int numberOfAttacks = Convert.ToInt16(stats[2][0]);
+
+            for (int a = 1 ;a <= numberOfAttacks; a++)
+            {
+                this.attacks.Add(new Attack(stats[]));
+            }
+        }
     }
     public class Enemy : SpiritMech
     {

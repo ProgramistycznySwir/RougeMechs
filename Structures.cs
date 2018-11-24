@@ -110,6 +110,18 @@ namespace RougeMechsStructures
             skillPoints = 0;
         }
     }
+    public struct Attack
+    {
+        public Attack(string name, int damage, int bluntDamage, int penetration)
+        {
+            this.name = name;
+            this.damage = damage;
+            this.bluntDamage = bluntDamage;
+            this.penetration = penetration;
+        }
+        public string name;
+        public int damage, bluntDamage, penetration;
+    }
     public struct Item
     {
         int slot;
