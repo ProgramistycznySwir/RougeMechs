@@ -189,15 +189,45 @@ namespace RougeMechsClasses
 
         }
 
-        protected void DoShit()
-        {
-            Console.WriteLine("Doin' Shit");
-        }
+        
+
+        //sealed public void DoShit()
+        //{
+        //    Console.WriteLine("Doin' Shit");
+        //}
     }
     public class Enemy : SpiritMech
     {
 
     }
 
-    
+    public class GrandParent
+    {
+        public GrandParent()
+        {
+            Log.Write("GrandParent", "It's me");
+        }
+    }
+    public class Parent : GrandParent
+    {
+        public Parent()
+        {
+            Log.Write("Parent", "It's me");
+        }
+        public Parent(bool a)
+        {
+            Log.Write("Parent", "It's me, called with bool");
+        }
+    }
+    public class Child : Parent
+    {
+        public Child()
+        {
+            Log.Write("Child", "It's me");
+        }
+        //public Child(bool b)
+        //{
+        //    Log.Write("Child", "It's me, called with bool");
+        //}
+    }
 }

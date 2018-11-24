@@ -58,7 +58,7 @@ namespace RougeMechs
             Draw.SMStats(new Vector2(123, 0));
             player.DisplayStats(new Vector2(123, 0));
 
-            //enemies.First().Do
+            
 
             int vara = 0;            
 
