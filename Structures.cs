@@ -129,6 +129,11 @@ namespace RougeMechsStructures
             target.stats.HP -= bluntDamage;
             target.stats.HP -= Convert.ToInt16(damage * 1);
         }
+        public void DealDamage(PrimitiveEntity target)
+        {
+            target.stats.HP -= bluntDamage;
+            target.stats.HP -= Convert.ToInt16(damage * 1);
+        }
     }
     public struct Accessory
     {

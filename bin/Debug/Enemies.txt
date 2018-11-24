@@ -1,0 +1,6 @@
+Enemy ID(basic description, this is ignored by game);ameOfEnemy //important is that you cannot make any space 
+vit; cap; str; agi; spi; armor
+numbers of Attacks ;AttackName; attack; bluntAttack; penetration; range;Condition; conditionModifier   //particualar attacks are seperated by ;; not ; //condition also (as also a name) mustn't have space in front
+1;Wolf
+ 7; 0; 6; 7; 0; 5
+ 2;Strike; 5; 5; 10; 1;random; 2;;Bite; 15; 2; 15; 1;random; 3
